@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打地鼠</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #game {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 10px;
+            justify-content: center;
+            margin: 20px auto;
+        }
+        .hole {
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            border: 2px solid #000;
+            position: relative;
+        }
+        .mole {
+            width: 80px;
+            height: 80px;
+            background-color: brown;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: none;
+            cursor: pointer;
+        }
+        #score {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>打地鼠</h1>
+    <div id="score">分数: 0</div>
+    <div id="game"></div>
+    <button onclick="startGame()">开始游戏</button>
+    <script>
+        const gameContainer = document.getElementById('game');
+        const scoreBoard = document.getElementById('score');
+        let score = 0;
+        let gameInterval;
+        let moleTimeout;
+
+        // 创建地洞
+        function createHoles() {
+            gameContainer.innerHTML = '';
+            for (let i = 0; i < 9; i++) {
+                const hole = document.createElement('div');
+                hole.classList.add('hole');
+                const mole = document.createElement('div');
+                mole.classList.add('mole');
+                mole.addEventListener('click', hitMole);
+                hole.appendChild(mole);
+                gameContainer.appendChild(hole);
+            }
+        }
+
+        // 打到地鼠
+        function hitMole(event) {
+            score++;
+            scoreBoard.textContent = `分数: ${score}`;
+            event.target.style.display = 'none';
+        }
+
+        // 随机显示地鼠
+        function showMole() {
+            const moles = document.querySelectorAll('.mole');
+            moles.forEach(mole => mole.style.display = 'none');
+            const randomIndex = Math.floor(Math.random() * moles.length);
+            const randomMole = moles[randomIndex];
+            randomMole.style.display = 'block';
+
+            // 地鼠显示一段时间后消失
+            moleTimeout = setTimeout(() => {
+                randomMole.style.display = 'none';
+            }, 800);
+        }
+
+        // 开始游戏
+        function startGame() {
+            score = 0;
+            scoreBoard.textContent = `分数: ${score}`;
+            createHoles();
+
+            // 每秒随机显示一个地鼠
+            clearInterval(gameInterval);
+            clearTimeout(moleTimeout);
+            gameInterval = setInterval(showMole, 1000);
+
+            // 游戏持续 30 秒
+            setTimeout(() => {
+                clearInterval(gameInterval);
+                clearTimeout(moleTimeout);
+                alert(`游戏结束！您的分数是: ${score}`);
+            }, 30000);
+        }
+
+        createHoles();
+    </script>
+</body>
+</html>
