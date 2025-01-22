@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>飞行射击游戏</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: black;
+        font-family: Arial, sans-serif;
+        color: white;
+      }
+      canvas {
+        display: block;
+        margin: auto;
+      }
+      #ui {
+        text-align: center;
+        margin-top: 10px;
+      }
+      #instructions {
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .start-button {
+        background-color: green; /* 开始游戏按钮背景色 */
+        color: white;
+      }
+
+      .restart-button {
+        background-color: red; /* 重新开始按钮背景色 */
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="gameCanvas"></canvas>
+    <div id="ui">
+      <h1>飞行射击游戏</h1>
+      <div id="score">分数: 0</div>
+      <button
+        id="gameButton"
+        class="start-button"
+        onclick="handleButtonClick()"
+      >
+        开始游戏
+      </button>
+      <div id="instructions">
+        <p>操作说明：</p>
+        <p>左右移动：使用方向键 ← 和 →</p>
+        <p>发射子弹：按空格键（Space）</p>
+      </div>
+    </div>
+    <script>
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = 800;
+      canvas.height = 600;
+
+      let spaceship, enemies, bullets, score, keys, gameOver;
+
+      let spawnEnemyInterval; // 敌人生成定时器
+      // 初始化游戏
+      function initGame() {
+        spaceship = {
+          x: canvas.width / 2 - 25,
+          y: canvas.height - 80,
+          width: 50,
+          height: 50,
+          speed: 5,
+        };
+        bullets = [];
+        enemies = [];
+        score = 0;
+        keys = {};
+        gameOver = false;
+        document.getElementById("gameButton").className = "start-button"; // 设置初始样式
+        document.getElementById("gameButton").textContent = "开始游戏";
+      }
+
+      // 重新开始游戏
+      function handleButtonClick() {
+        clearInterval(spawnEnemyInterval); // 清除定时器
+        initGame();
+        // 定期生成敌人
+        spawnEnemyInterval = setInterval(() => {
+          if (!gameOver) spawnEnemy();
+        }, 1000);
+        gameLoop();
+      }
+
+      // 绘制飞船
+      function drawSpaceship() {
+        ctx.fillStyle = "white";
+        ctx.fillRect(
+          spaceship.x,
+          spaceship.y,
+          spaceship.width,
+          spaceship.height
+        );
+      }
+
+      // 绘制子弹
+      function drawBullet(bullet) {
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+      }
+
+      // 绘制敌人
+      function drawEnemy(enemy) {
+        ctx.fillStyle = "red";
+        ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+      }
+
+      // 移动飞船
+      function moveSpaceship() {
+        if (keys["ArrowLeft"] && spaceship.x > 0)
+          spaceship.x -= spaceship.speed;
+        if (keys["ArrowRight"] && spaceship.x + spaceship.width < canvas.width)
+          spaceship.x += spaceship.speed;
+      }
+
+      // 发射子弹
+      function shootBullet() {
+        bullets.push({
+          x: spaceship.x + spaceship.width / 2 - 5,
+          y: spaceship.y,
+          width: 5,
+          height: 20,
+        });
+      }
+
+      // 生成敌人
+      function spawnEnemy() {
+        const x = Math.random() * (canvas.width - 50);
+        enemies.push({
+          x,
+          y: 0,
+          width: 50,
+          height: 50,
+          speed: 1 + Math.random() * 2,
+        }); // 调整为 1 到 3 的速度
+      }
+
+      // 更新游戏状态
+      function updateGame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        moveSpaceship();
+        drawSpaceship();
+
+        // 更新子弹
+        bullets = bullets.filter((bullet) => bullet.y > 0);
+        bullets.forEach((bullet) => {
+          bullet.y -= 5;
+          drawBullet(bullet);
+        });
+
+        // 更新敌人
+        enemies.forEach((enemy) => {
+          enemy.y += enemy.speed;
+          drawEnemy(enemy);
+
+          // 检查敌人与子弹碰撞
+          bullets.forEach((bullet, bulletIndex) => {
+            if (
+              bullet.x < enemy.x + enemy.width &&
+              bullet.x + bullet.width > enemy.x &&
+              bullet.y < enemy.y + enemy.height &&
+              bullet.y + bullet.height > enemy.y
+            ) {
+              enemies.splice(enemies.indexOf(enemy), 1);
+              bullets.splice(bulletIndex, 1);
+              score++;
+            }
+          });
+
+          // 检查敌人与飞船碰撞
+          if (
+            spaceship.x < enemy.x + enemy.width &&
+            spaceship.x + spaceship.width > enemy.x &&
+            spaceship.y < enemy.y + enemy.height &&
+            spaceship.y + spaceship.height > enemy.y
+          ) {
+            gameOver = true;
+          }
+        });
+
+        // 移除屏幕外的敌人
+        enemies = enemies.filter((enemy) => enemy.y < canvas.height);
+
+        // 显示分数
+        document.getElementById("score").textContent = `分数: ${score}`;
+      }
+
+      // 游戏主循环
+      function gameLoop() {
+        updateGame();
+        if (gameOver) {
+          ctx.fillStyle = "white";
+          ctx.font = "30px Arial";
+          ctx.fillText(
+            `游戏结束！分数: ${score}`,
+            canvas.width / 2 - 100,
+            canvas.height / 2
+          );
+          //   console.log(score); // 检查分数的值
+          document.getElementById("gameButton").textContent = "重新开始"; // 更新按钮文本
+          document.getElementById("gameButton").className = "restart-button";
+          return;
+        }
+        if (!gameOver) requestAnimationFrame(gameLoop);
+      }
+
+      // 事件监听
+      document.addEventListener("keydown", (e) => {
+        keys[e.key] = true;
+        // 修改为按 a 发射
+        if (e.key === "a" && !gameOver) shootBullet();
+      });
+
+      document.addEventListener("keyup", (e) => {
+        keys[e.key] = false;
+      });
+    </script>
+  </body>
+</html>
