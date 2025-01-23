@@ -1,0 +1,97 @@
+/********************************* Navigation ***************************/
+#mainNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #e0f7fa; /* 淡绿色 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.navLogo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navLogo img {
+    height: 40px;
+}
+
+.navMenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navMenu li {
+    position: relative;
+    margin-left: 20px;
+}
+
+.navMenu li a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.navMenu li a:hover {
+    background-color: #48b2e7; 
+}
+
+/* 子菜单 */
+.navSubmenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #e0f7fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+}
+
+.navMenu li:hover .navSubmenu {
+    display: block;
+}
+
+.navSubmenu li a {
+    padding: 10px;
+    white-space: nowrap;
+}
+
+/*滚动时隐藏导航栏*/
+#mainNav.hideNav {
+    transform: translateY(-100%); /* 隐藏导航栏 */
+}
+
+#mainNav.hideNav::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 20px; /* 设置高度 */
+    background-color: transparent; /* 背景透明 */
+}

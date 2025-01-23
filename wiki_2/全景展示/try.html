@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生物分子全景示例</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+        #panorama {
+            width: 800px;
+            height: 500px;
+            margin: 0 auto;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div id="panorama"></div>
+<script>
+    pannellum.viewer('panorama', {
+        "type": "equirectangular", // 全景图像类型
+        "panorama": "https://imgs.699pic.com/images/500/636/579.jpg!seo.v1", // 实验室全景图像 URL
+        "autoLoad": true, // 自动加载全景图像
+        "hotSpots": [
+            {
+                "pitch": -10, // 垂直角度
+                "yaw": 180, // 水平角度
+                "type": "info", // 热点类型
+                "text": "显微镜区域", // 热点提示信息
+                "URL": "https://example.com/microscope-details" // 点击后跳转的链接
+            },
+            {
+                "pitch": 5,
+                "yaw": 90,
+                "type": "info",
+                "text": "生物分子模型展示",
+                "URL": "https://example.com/molecule-details"
+            }
+        ]
+    });
+</script>
+
+</body>
+</html>

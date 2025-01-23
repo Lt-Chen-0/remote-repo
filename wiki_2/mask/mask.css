@@ -1,0 +1,305 @@
+/********************************* mask *********************************/
+/* 遮罩层样式 */
+#mask {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 130;
+    background-color: #ffffff;
+    overflow: hidden;
+    transition: opacity 0.5s ease; /* 添加淡出过渡效果 */
+}
+
+/* 居中加载动画 */
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-img {
+    animation: spin 2s linear infinite;
+    transform-origin: center;
+    max-width: 200%; /* 调整图片大小 */
+    max-height: 200%;
+}
+
+#loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 图片旋转动画 */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+  /************************** 队员卡容器 *************************************/
+.team-cards-container {
+    width: 65%;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* 标题 */
+.team-cards-header {
+    width: 100%;
+    height: 6.5rem;
+    background-color: #709cd1;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.team-cards-header .team-cards-group {
+    font-size: 2rem;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 400;
+    color: #fcfffe;
+    text-align: center;
+    line-height: 6.5rem;
+}
+
+/* 队员卡 */
+.team-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+    flex-wrap: wrap;
+}
+
+.team-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50px;
+    width: 24%;
+    height: 22vw;
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+    transform: scale(1.05);
+}
+
+.team-card .team-photo {
+    height: 100%;
+    width: 100%;
+}
+
+.team-card .team-photo img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    transition: 0.5s;
+    border-radius: 50px;
+}
+
+.team-card-description:hover + .team-photo img {
+    filter: blur(5px);
+}
+
+.team-card .team-card-description {
+    position: absolute;
+    top: 75%;
+    bottom: -20rem;
+    width: 100%;
+    transition: 0.5s;
+    z-index: 2;
+    background-color: #709cd1;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+.team-card .team-card-description::before {
+    content: "";
+    position: absolute;
+    background-image: url("https://static.igem.wiki/teams/5291/images/arrow.svg");
+    width: 2vw;
+    height: 1.5vw;
+    z-index: 2;
+    left: 10%;
+    top: 12%;
+    transition: transform 0.5s ease;
+    background-repeat: no-repeat;
+}
+
+.team-card-description:hover::before {
+    transform: rotate(180deg);
+}
+
+.team-card-description:hover {
+    top: 0;
+    bottom: 0;
+    background-color: #709cd1;
+}
+
+.team-card .team-card-description .team-name {
+    margin-top: 1.2rem;
+    margin-left: 30%;
+    font-size: 1.8vw;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 300;
+    color: #fcfffe;
+    line-height: 3.5rem;
+}
+
+.team-card .team-card-description .team-role {
+    font-size: 1.2vw;
+    margin-left: 30%;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 300;
+    color: #fcfffe;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.team-card .team-card-description h3 {
+    margin-top: 3rem;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 300;
+    font-size: 2vw;
+    color: #fcfffe;
+    transition: 0.5s;
+    opacity: 0;
+    text-align: center;
+}
+
+.team-card-description:hover h3 {
+    opacity: 1;
+}
+
+.team-card .team-card-description .team-motto {
+    margin: 1rem;
+    font-size: 1.05vw;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 300;
+    color: #fcfffe;
+    line-height: 2rem;
+    word-wrap: break-word;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    text-align: center;
+}
+
+.team-card-description:hover .team-motto {
+    opacity: 1;
+}
+
+/********************************* Navigation ***************************/
+#mainNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #e0f7fa; /* 淡绿色 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s;
+    z-index: 1000;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.navLogo img {
+    height: 40px;
+}
+
+.navMenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navMenu li {
+    position: relative;
+    margin-left: 20px;
+}
+
+.navMenu li a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.navMenu li a:hover {
+    background-color: #48b2e7; /* 悬停时的淡绿色 */
+}
+
+/* 子菜单 */
+.navSubmenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #e0f7fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+}
+
+.navMenu li:hover .navSubmenu {
+    display: block;
+}
+
+.navSubmenu li a {
+    padding: 10px;
+    white-space: nowrap;
+}
+
+滚动时隐藏导航栏
+#mainNav.hideNav {
+    opacity: 0;
+}
+
+#mainNav.hideNav::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
