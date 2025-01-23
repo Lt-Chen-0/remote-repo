@@ -1,9 +1,9 @@
-#wiki homework 1
+# wiki homework 1
 本来做的是飞行模拟游戏，但它有个bug，只有第一次玩是正常的，之后重新开始游戏分数一直是0，还有点卡。问了ai好几次也没解决。
 所以，又做了打地鼠游戏。
 但我感觉飞行模拟更好玩，（或许可以手动刷新）就保留了
 
-#wiki homework 2
+# wiki homework 2
 
 ### 1.navigation:
 
