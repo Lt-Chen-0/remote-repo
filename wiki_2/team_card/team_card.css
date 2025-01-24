@@ -1,3 +1,8 @@
+body {
+    background-color:#F7FBFC;
+    font-family: 'Exo 2', sans-serif;
+}
+ 
  /************************** 队员卡容器 *************************************/
  .team-cards-container {
     width: 65%;
@@ -9,7 +14,7 @@
 .team-cards-header {
     width: 100%;
     height: 6.5rem;
-    background-color: #709cd1;
+    background-color: #acd5e6;
     border-radius: 50px;
     display: flex;
     justify-content: center;
@@ -19,7 +24,6 @@
 
 .team-cards-header .team-cards-group {
     font-size: 2rem;
-    font-family: "Barlow Condensed", sans-serif;
     font-weight: 400;
     color: #fcfffe;
     text-align: center;
@@ -72,7 +76,7 @@
     width: 100%;
     transition: 0.5s;
     z-index: 2;
-    background-color: #709cd1;
+    background-color: #acd5e6;
     overflow: hidden;
     border-radius: 50px;
 }
@@ -104,7 +108,6 @@
     margin-top: 1.7rem;
     margin-left: 30%;
     font-size: 1.8vw;
-    font-family: "Barlow Condensed", sans-serif;
     font-weight: 300;
     color: #fcfffe;
     line-height: 3.5rem;
@@ -113,7 +116,6 @@
 .team-card .team-card-description .team-role {
     font-size: 1.2vw;
     margin-left: 30%;
-    font-family: "Barlow Condensed", sans-serif;
     font-weight: 300;
     color: #fcfffe;
     line-height: 2rem;
@@ -122,7 +124,6 @@
 
 .team-card .team-card-description h3 {
     margin-top: 3rem;
-    font-family: "Barlow Condensed", sans-serif;
     font-weight: 300;
     font-size: 2vw;
     color: #fcfffe;
@@ -138,7 +139,6 @@
 .team-card .team-card-description .team-motto {
     margin: 1rem;
     font-size: 1.05vw;
-    font-family: "Quicksand", sans-serif;
     font-weight: 300;
     color: #fcfffe;
     line-height: 2rem;

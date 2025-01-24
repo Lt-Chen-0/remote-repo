@@ -1,7 +1,8 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Exo 2', sans-serif;
     margin: 0;
     display: flex;
+    background-color:#F7FBFC;
   }
 
 .nav-container {
@@ -10,19 +11,18 @@ body {
     position: fixed;
     z-index: 1;
     flex-direction: column;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #acd5e6;
     padding: 20px;
   }
   
   .nav-title {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 36px;
     margin-bottom: 1rem;
   }
   
   .nav-section-item {
-    font-size: 1rem;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
     margin-bottom: 0.5rem;
@@ -31,7 +31,7 @@ body {
   }
   
   .active-highlight {
-    color: #007bff;
+    color: #c62e65;
   }
   
   .sub-nav-group {
@@ -45,17 +45,26 @@ body {
   }
   
   .sub-section-item {
-    font-size: 0.875rem;
+    font-size: 18px;
     margin-left: 1rem;
     cursor: pointer;
     /* color: #555; */
   }
   
   .content {
-    margin-left: 300px;
-    padding: 100px;
+    margin-left: 340px;
+    padding: 50px 170px;
+    background-color: #d5eaf3;
   }
   
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
   /* Four-Image Grid */
 .image-grid {
     display: grid;

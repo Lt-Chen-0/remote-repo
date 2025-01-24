@@ -1,3 +1,8 @@
+body {
+    background-color:#F7FBFC;
+    font-family: 'Exo 2', sans-serif;
+}
+
 /********************************* mask *********************************/
 /* 遮罩层样式 */
 #mask {
@@ -59,7 +64,7 @@
 
 
 
-  /************************** 队员卡容器 *************************************/
+/************************** 队员卡容器 *************************************/
 .team-cards-container {
     width: 65%;
     margin: 0 auto;
@@ -70,7 +75,7 @@
 .team-cards-header {
     width: 100%;
     height: 6.5rem;
-    background-color: #709cd1;
+    background-color: #acd5e6;
     border-radius: 50px;
     display: flex;
     justify-content: center;
@@ -80,7 +85,6 @@
 
 .team-cards-header .team-cards-group {
     font-size: 2rem;
-    font-family: "Barlow Condensed", sans-serif;
     font-weight: 400;
     color: #fcfffe;
     text-align: center;
@@ -133,7 +137,7 @@
     width: 100%;
     transition: 0.5s;
     z-index: 2;
-    background-color: #709cd1;
+    background-color: #acd5e6;
     overflow: hidden;
     border-radius: 50px;
 }
@@ -162,10 +166,9 @@
 }
 
 .team-card .team-card-description .team-name {
-    margin-top: 1.2rem;
+    margin-top: 1.7rem;
     margin-left: 30%;
     font-size: 1.8vw;
-    font-family: "Barlow Condensed", sans-serif;
     font-weight: 300;
     color: #fcfffe;
     line-height: 3.5rem;
@@ -174,7 +177,6 @@
 .team-card .team-card-description .team-role {
     font-size: 1.2vw;
     margin-left: 30%;
-    font-family: "Barlow Condensed", sans-serif;
     font-weight: 300;
     color: #fcfffe;
     line-height: 2rem;
@@ -183,7 +185,6 @@
 
 .team-card .team-card-description h3 {
     margin-top: 3rem;
-    font-family: "Barlow Condensed", sans-serif;
     font-weight: 300;
     font-size: 2vw;
     color: #fcfffe;
@@ -199,7 +200,6 @@
 .team-card .team-card-description .team-motto {
     margin: 1rem;
     font-size: 1.05vw;
-    font-family: "Quicksand", sans-serif;
     font-weight: 300;
     color: #fcfffe;
     line-height: 2rem;
@@ -220,9 +220,13 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #e0f7fa; /* 淡绿色 */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: top 0.3s;
+    height: 90px;
+    background-color: #F7FBFC; 
+    color: #336896;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
     z-index: 1000;
 }
 
@@ -230,9 +234,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 90%;
     margin: 0 auto;
-    padding: 20px 20px;
+    padding: 0 0;
+}
+
+.navLogo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: 1.125rem;
+    font-weight: 500;
 }
 
 .navLogo img {
@@ -241,7 +254,8 @@
 
 .navMenu {
     list-style: none;
-    margin: 0;
+    margin: 0.5em 1vw;
+    margin-right: 1vw;
     padding: 0;
     display: flex;
 }
@@ -253,16 +267,16 @@
 
 .navMenu li a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
-    color: #333;
-    padding: 10px 15px;
+    color: #336896;
+    padding:  15px;
     display: block;
     transition: background-color 0.3s;
 }
 
 .navMenu li a:hover {
-    background-color: #48b2e7; /* 悬停时的淡绿色 */
+    background-color: #ACD5E6; 
 }
 
 /* 子菜单 */
@@ -271,7 +285,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #e0f7fa;
+    background-color: #F7FBFC;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     list-style: none;
     padding: 0;
@@ -284,13 +298,14 @@
 }
 
 .navSubmenu li a {
+    font-size: 20px;
     padding: 10px;
     white-space: nowrap;
 }
 
-滚动时隐藏导航栏
+/*滚动时隐藏导航栏*/
 #mainNav.hideNav {
-    opacity: 0;
+    transform: translateY(-100%); /* 隐藏导航栏 */
 }
 
 #mainNav.hideNav::after {
@@ -299,7 +314,6 @@
     top: 100%;
     left: 0;
     width: 100%;
-
-    opacity: 1;
-    transition: opacity 0.3s ease;
+    height: 20px; /* 设置高度 */
+    background-color: transparent; /* 背景透明 */
 }

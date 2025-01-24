@@ -1,11 +1,21 @@
+body {
+    background-color:#F7FBFC;
+    font-family: 'Exo 2', sans-serif;
+}
+
+
 /********************************* Navigation ***************************/
 #mainNav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #e0f7fa; /* 淡绿色 */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 90px;
+    background-color: #F7FBFC; 
+    color: #336896;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     transition: all 0.3s;
     z-index: 1000;
 }
@@ -14,9 +24,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 90%;
     margin: 0 auto;
-    padding: 20px 20px;
+    padding: 0 0;
 }
 
 .navLogo {
@@ -24,8 +34,8 @@
     margin: 0;
     padding: 0;
     position: relative;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1.125rem;
+    font-weight: 500;
 }
 
 .navLogo img {
@@ -34,7 +44,8 @@
 
 .navMenu {
     list-style: none;
-    margin: 0;
+    margin: 0.5em 1vw;
+    margin-right: 1vw;
     padding: 0;
     display: flex;
 }
@@ -46,16 +57,16 @@
 
 .navMenu li a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
-    color: #333;
-    padding: 10px 15px;
+    color: #336896;
+    padding:  15px;
     display: block;
     transition: background-color 0.3s;
 }
 
 .navMenu li a:hover {
-    background-color: #48b2e7; 
+    background-color: #ACD5E6; 
 }
 
 /* 子菜单 */
@@ -64,7 +75,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #e0f7fa;
+    background-color: #F7FBFC;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     list-style: none;
     padding: 0;
@@ -77,6 +88,7 @@
 }
 
 .navSubmenu li a {
+    font-size: 20px;
     padding: 10px;
     white-space: nowrap;
 }
