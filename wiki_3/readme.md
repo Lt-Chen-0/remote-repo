@@ -15,12 +15,14 @@
  2.**Home_3**：
  - 动画：
    - 资料：复旦大学线上WIKI交流活动：分享pdf中的GSAP，https://gsap.com/，发现了：https://gsap.com/demos/?page=1，是三个功能的混合搭配
+  * ps：其中一些库要付费，所以大多数功能都是重写的，用js和一些免费库实现的，改的都几乎没有GASP了。*
      - https://codepen.io/vanholtzco/pen/abEOead
      - https://codepen.io/GreenSock/pen/xxPNyyO
      - 还有一个忘了
    - 启发：学长分享的https://www.awwwards.com/websites/
-     - 学长分享的https://www.awwwards.com/websites/ 
- * ps：其中一些库要付费，所以大多数功能都是重写的，用js和一些免费库实现的。
+      - https://www.rangerak.org/，可以做水平滚动
+      - 其中还有很多网站是水平滚动，pin之类的
+ * ps：其中一些库要付费，所以大多数功能都是重写的，用js和一些免费库实现的。*
 - 配色，字体：同上
 
 
@@ -28,7 +30,10 @@
  - 动画：
     - 资料： GASP https://codepen.io/collection/BNMEYN ，中的一个
       - https://codepen.io/GreenSock/pen/NWXgqyK
+* ps：其中一些库要付费，所以大多数功能都是重写的，用js和一些免费库实现的。这个修改的很多*
     - 启发：学长分享的https://www.awwwards.com/websites/
-     - 学长分享的https://www.awwwards.com/websites/
+      - https://www.rangerak.org/，可以实现照片变化
  - 配色，字体：同上
  - 这个有时候比较卡
+
+* ps:参考资料自然不能忘了ai *
