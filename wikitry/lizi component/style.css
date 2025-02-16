@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+}
+
+.particle-container {
+    position: relative; /* 相对定位，方便 canvas 绝对定位 */
+    overflow: hidden;   /* 确保粒子不超出容器边界 */
+}
+
+/* 雪花粒子容器样式 */
+#snow-container {
+    width: 400px;       /* 雪花容器宽度 */
+    height: 300px;      /* 雪花容器高度 */
+    margin: 20px auto;  /* 居中显示，并留出一些外边距 */
+    border: 1px solid #aaa; /* 可选：添加边框 */
+}
+
+/* 随机粒子容器样式 */
+#random-particles-container {
+    width: 600px;      /* 随机粒子容器宽度 */
+    height: 200px;     /* 随机粒子容器高度 */
+    margin: 20px auto; /* 居中显示，并留出一些外边距 */
+    border: 1px solid #aaa; /* 可选：添加边框 */
+}
+
+
+canvas {
+    display: block;
+    position: absolute; /* 绝对定位，填充父容器 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.content {
+    text-align: center;
+    padding: 20px;
+}

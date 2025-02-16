@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Pin Component</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 组件容器（命名均加前缀 cp-，保证独立性） -->
+  <div id="custom-pin-component">
+  
+    <!-- 第一部分：描述信息，不涉及 pin 效果 -->
+    <section class="cp-section cp-blue cp-description">
+      <div>
+        <h1>Basic Pin</h1>
+        <p>
+          You can <strong>pin</strong> an element while the trigger is active so that it stays in place
+          between the defined <code>start</code> and <code>end</code> points.
+        </p>
+        <div class="cp-scroll-down">Scroll down<div class="cp-arrow"></div></div>
+      </div>
+    </section>
+    
+    <!-- 第二部分：橙色区域。效果：当该区域的顶部触碰视口顶部时开始固定其内部内容，
+         当该区域底部距离视口顶部 150px 时解除固定 -->
+    <section id="cp-orange" class="cp-section cp-orange cp-align-top">
+      <p id="cp-orange-content">
+        <code>start: "top top"</code> triggers when the orange element’s <strong>top edge</strong> meets the viewport top.
+        <code>end: "bottom 150px"</code> stops pinning when the orange element’s bottom is 150px from the top.
+      </p>
+    </section>
+    
+    <!-- 第三部分：红色区域。效果：当该区域的顶部触碰视口中心时固定内容，固定 200px 后解除 -->
+    <section id="cp-red" class="cp-section cp-red cp-align-top">
+      <p id="cp-red-content">
+        <code>start: "top center"</code> pins this element when the red element’s <strong>top</strong> reaches the viewport center,
+        and remains pinned for 200px (<code>end: "+=200"</code>).
+      </p>
+    </section>
+    
+    <!-- 第四部分：尾部内容 -->
+    <section class="cp-section cp-purple">
+      <p>Easy Peasy!</p>
+    </section>
+    
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

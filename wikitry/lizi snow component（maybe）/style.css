@@ -1,0 +1,139 @@
+body {
+    background-color: #f7f7f7; /* 设置背景色为黑色 */
+    margin: 0; /* 移除 body 的默认 margin */
+    /* overflow: hidden; 隐藏超出视窗的内容，防止滚动条出现 */
+}
+
+canvas {
+    background-color: rgb(229, 238, 247);
+    display: block;
+    position: absolute; /* 绝对定位，使其相对于 #particle-container 定位 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 让 canvas 填充父 div 的宽度 */
+    height: 100%; /* 让 canvas 填充父 div 的高度 */
+    z-index: -1; /* 仍然放在背景层 */
+}
+
+#particle-container {
+    width: 99%; /* 设置 div 的宽度，根据需要调整 */
+    height: 61vh; /* 设置 div 的高度，根据需要调整 */
+    position: relative; /* 设置相对定位，方便 canvas 绝对定位在其内部 */
+
+    border: 1px solid #ccc; /* 可选：添加边框，方便查看 div 区域 */
+    overflow: hidden; /* 确保粒子不超出 div 边界 */
+}
+
+/* bird */
+
+.container {
+	z-index: 1;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 35rem;
+	/* background-image:  url('https://images.unsplash.com/photo-1446824505046-e43605ffb17f'); */
+	background-blend-mode: soft-light;
+	background-size: cover;
+	background-position: center center;
+	padding: 2rem;
+}
+
+.bird {
+	background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/174479/bird-cells-new.svg);
+	background-size: auto 100%;
+	width: 88px;
+	height: 125px;
+	will-change: background-position;
+	animation-name: fly-cycle;
+	animation-timing-function: steps(10);
+	animation-iteration-count: infinite;
+	animation-play-state: running; /* 添加此行 */
+}
+
+.bird--one {
+	animation-duration: 1s;
+	animation-delay: -0.5s;
+}
+
+.bird--two {
+	animation-duration: 0.9s;
+	animation-delay: -0.75s;
+}
+
+.bird--three {
+	animation-duration: 1.25s;
+	animation-delay: -0.25s;
+}
+
+.bird--four {
+	animation-duration: 1.1s;
+	animation-delay: -0.5s;
+}
+
+.bird-container {
+	position: absolute;
+	top: 20%;
+	left: -10%;
+	transform: scale(0) translateX(-10vw);
+	will-change: transform;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-play-state: running; /* 添加此行 */
+}
+
+.bird-container--one {
+	animation-duration: 15s;
+	animation-delay: 0;
+	animation-name: fly-right-one; /* 添加此行 */
+}
+
+.bird-container--two {
+	animation-duration: 16s;
+	animation-delay: 1s;
+	animation-name: fly-right-two; /* 添加此行 */
+}
+
+.bird-container--three {
+	animation-duration: 14.6s;
+	animation-delay: 9.5s;
+	animation-name: fly-right-one; /* 添加此行 */
+}
+
+.bird-container--four {
+	animation-duration: 16s;
+	animation-delay: 10.25s;
+	animation-name: fly-right-two; /* 添加此行 */
+}
+
+@keyframes fly-cycle {
+	100% {
+		background-position: -900px 0;
+	}
+}
+
+@keyframes fly-right-one {
+	0% { transform: scale(0.3) translateX(-10vw); }
+	10% { transform: translateY(2vh) translateX(10vw) scale(0.4); }
+	20% { transform: translateY(0vh) translateX(30vw) scale(0.5); }
+	30% { transform: translateY(4vh) translateX(50vw) scale(0.6); }
+	40% { transform: translateY(2vh) translateX(70vw) scale(0.6); }
+	50% { transform: translateY(0vh) translateX(90vw) scale(0.6); }
+	60% { transform: translateY(0vh) translateX(110vw) scale(0.6); }
+	100% { transform: translateY(0vh) translateX(110vw) scale(0.6); }
+}
+
+@keyframes fly-right-two {
+	0% { transform: translateY(-2vh) translateX(-10vw) scale(0.5); }
+	10% { transform: translateY(0vh) translateX(10vw) scale(0.4); }
+	20% { transform: translateY(-4vh) translateX(30vw) scale(0.6); }
+	30% { transform: translateY(1vh) translateX(50vw) scale(0.45); }
+	40% { transform: translateY(-2.5vh) translateX(70vw) scale(0.5); }
+	50% { transform: translateY(0vh) translateX(90vw) scale(0.45); }
+	60% { transform: translateY(0vh) translateX(110vw) scale(0.45); }
+	100% { transform: translateY(0vh) translateX(110vw) scale(0.45); }
+}
+
+

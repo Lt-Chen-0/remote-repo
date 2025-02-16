@@ -1,0 +1,597 @@
+@import url('https://fonts.googleapis.com/css?family=Arima+Madurai:300');
+
+
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
+    display: flex;
+    background-color:#F7FBFC;
+	flex-direction: column;
+  }
+
+
+/* nav */
+/* 
+body {
+    background-color:#F7FBFC;
+    font-family: 'Exo 2', sans-serif;
+} */
+
+h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+.home-photo-title {
+	font-size: 6rem;
+	color: white;
+	letter-spacing: 0.1rem;
+	text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.66);
+}
+
+/********************************* Navigation ***************************/
+#mainNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: #F7FBFC; 
+    color: #336896;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 0;
+}
+
+.navLogo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.navLogo img {
+    height: 40px;
+}
+
+.navMenu {
+    list-style: none;
+    margin: 0.5em 1vw;
+    margin-right: 1vw;
+    padding: 0;
+    display: flex;
+}
+
+.navMenu li {
+    position: relative;
+    margin-left: 20px;
+}
+
+.navMenu li a {
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    color: #336896;
+    padding:  15px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.navMenu li a:hover {
+    background-color: #ACD5E6; 
+}
+
+/* 子菜单 */
+.navSubmenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #F7FBFC;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+}
+
+.navMenu li:hover .navSubmenu {
+    display: block;
+}
+
+.navSubmenu li a {
+    font-size: 20px;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+/*滚动时隐藏导航栏*/
+#mainNav.hideNav {
+    transform: translateY(-100%); /* 隐藏导航栏 */
+}
+
+#mainNav.hideNav::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 20px; /* 设置高度 */
+    background-color: transparent; /* 背景透明 */
+}
+
+
+/* side bar */
+
+
+.nav-container {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    flex-direction: column;
+    background-color: #acd5e6;
+    padding: 20px;
+  }
+  
+  .nav-title {
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 1rem;
+  }
+  
+  .nav-section-item {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 2rem;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-block {
+	height: 70px;
+  }
+
+  .active-highlight {
+    color: #c62e65;
+  }
+  
+  .sub-nav-group {
+    display: none;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+  
+  .expanded {
+    display: block;
+  }
+  
+  .sub-section-item {
+    font-size: 18px;
+    margin-left: 1rem;
+    cursor: pointer;
+    /* color: #555; */
+  }
+  
+  .content {
+    margin-left: 340px;
+	flex: 1;
+    padding: 50px 170px;
+    background-color: #d5eaf3;
+  }
+  .content-block { /* 防止内容被导航栏遮挡 */
+	height: 90px;
+  }
+  
+
+  /* Four-Image Grid */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.image-item {
+    text-align: center;
+}
+
+.image-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* PDF Embed */
+.pdf-embed {
+    margin-bottom: 40px;
+}
+
+.pdf-embed p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.pdf-embed iframe {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* Footer */
+/* Footer base styles */
+footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .contact-me {
+    margin-bottom: 20px;
+  }
+  
+  /* Wrapper styles */
+  .wrapper {
+    padding:0 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    /* 使用合法的 rgba 颜色写法 */
+    /* background-image: linear-gradient(to bottom right, rgba(129,194,222,1), rgba(79,146,172,1)); */
+    transition: all 0.4s ease-out;
+  }
+  
+  .wrapper__title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #191308;
+    margin-bottom: 1rem;
+  }
+  .wrapper__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+  }
+  
+  /* Social link color modifiers */
+  .social-link--linkedin {
+    color: #2d76b0;
+  }
+  
+  .social-link--github {
+    color: #000;
+  }
+  
+  .social-link--instagram {
+    color: #9a2970;
+  }
+  
+  .social-link--dribbble {
+    color: #b53561;
+  }
+  
+  /* Social svg default styles */
+  .social-link .social-svg {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+
+  .social-svg {
+    width: 4.8rem;
+    height: 4.8rem;
+    display: block;
+    margin: auto;
+  }
+  
+  
+  /* Social group elements inside svg */
+  .social-link .social-svg .social-group__icon {
+    fill: #191308;
+    transition: all 0.2s;
+  }
+  
+  .social-link .social-svg .social-group__inner-circle {
+    fill: transparent;
+    transition: all 0.2s;
+  }
+  
+  .social-link .social-svg .social-group__outline {
+    stroke: #191308;
+    transform-origin: 50% 50%;
+    transition: all 0.2s;
+  }
+  
+  /* Hover, active, focus states for social svg */
+  .social-link .social-svg:hover .social-group__icon,
+  .social-link .social-svg:active .social-group__icon,
+  .social-link .social-svg:focus .social-group__icon {
+    fill: #FFFBFA;
+    transition: all 0.45s;
+  }
+  
+  .social-link .social-svg:hover .social-group__inner-circle,
+  .social-link .social-svg:active .social-group__inner-circle,
+  .social-link .social-svg:focus .social-group__inner-circle {
+    fill: currentColor;
+    transition: all 0.45s;
+  }
+  
+  .social-link .social-svg:hover .social-group__inner-circle--instagram,
+  .social-link .social-svg:active .social-group__inner-circle--instagram,
+  .social-link .social-svg:focus .social-group__inner-circle--instagram {
+    fill: url(#simpleInsta) !important;
+  }
+  
+  .social-link .social-svg:hover .social-group__outline,
+  .social-link .social-svg:active .social-group__outline,
+  .social-link .social-svg:focus .social-group__outline {
+    stroke: currentColor;
+    transform: scale(1.1);
+    transition: all 0.45s;
+  }
+  
+  /* Horizontal rule styling */
+  hr {
+    width: 50%;
+    margin: 20px auto;
+    border: 0;
+    border-top: 1px solid #ccc;
+  }
+  
+  /* Copyright styling */
+  .copyright {
+    font-size: 14px;
+    color: #666;
+  }
+  
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;/*#6eaced*/
+    background-color: #5094d8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-top:hover {
+    background-color: #0052aa;
+}
+
+.back-to-top:active {
+    transform: scale(0.8);
+}
+
+/* Progress Ring */
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.progress-ring-circle {
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+/* Arrow */
+.arrow {
+    color: white;
+    font-size: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+/* home page */
+
+/* h1 {
+	font-family: 'Arima Madurai', cursive;
+	color: black;
+	font-size: 4rem;
+	letter-spacing: -3px;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
+	position: relative;
+	z-index: 3;
+} */
+
+.container {
+	z-index: 1;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 35rem;
+	background-image:  url('https://images.unsplash.com/photo-1446824505046-e43605ffb17f');
+	background-blend-mode: soft-light;
+	background-size: cover;
+	background-position: center center;
+	padding: 2rem;
+}
+
+.bird {
+	background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/174479/bird-cells-new.svg);
+	background-size: auto 100%;
+	width: 88px;
+	height: 125px;
+	will-change: background-position;
+	animation-name: fly-cycle;
+	animation-timing-function: steps(10);
+	animation-iteration-count: infinite;
+	animation-play-state: running; /* 添加此行 */
+}
+
+.bird--one {
+	animation-duration: 1s;
+	animation-delay: -0.5s;
+}
+
+.bird--two {
+	animation-duration: 0.9s;
+	animation-delay: -0.75s;
+}
+
+.bird--three {
+	animation-duration: 1.25s;
+	animation-delay: -0.25s;
+}
+
+.bird--four {
+	animation-duration: 1.1s;
+	animation-delay: -0.5s;
+}
+
+.bird-container {
+	position: absolute;
+	top: 20%;
+	left: -10%;
+	transform: scale(0) translateX(-10vw);
+	will-change: transform;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-play-state: running; /* 添加此行 */
+}
+
+.bird-container--one {
+	animation-duration: 15s;
+	animation-delay: 0;
+	animation-name: fly-right-one; /* 添加此行 */
+}
+
+.bird-container--two {
+	animation-duration: 16s;
+	animation-delay: 1s;
+	animation-name: fly-right-two; /* 添加此行 */
+}
+
+.bird-container--three {
+	animation-duration: 14.6s;
+	animation-delay: 9.5s;
+	animation-name: fly-right-one; /* 添加此行 */
+}
+
+.bird-container--four {
+	animation-duration: 16s;
+	animation-delay: 10.25s;
+	animation-name: fly-right-two; /* 添加此行 */
+}
+
+@keyframes fly-cycle {
+	100% {
+		background-position: -900px 0;
+	}
+}
+
+@keyframes fly-right-one {
+	0% { transform: scale(0.3) translateX(-10vw); }
+	10% { transform: translateY(2vh) translateX(10vw) scale(0.4); }
+	20% { transform: translateY(0vh) translateX(30vw) scale(0.5); }
+	30% { transform: translateY(4vh) translateX(50vw) scale(0.6); }
+	40% { transform: translateY(2vh) translateX(70vw) scale(0.6); }
+	50% { transform: translateY(0vh) translateX(90vw) scale(0.6); }
+	60% { transform: translateY(0vh) translateX(110vw) scale(0.6); }
+	100% { transform: translateY(0vh) translateX(110vw) scale(0.6); }
+}
+
+@keyframes fly-right-two {
+	0% { transform: translateY(-2vh) translateX(-10vw) scale(0.5); }
+	10% { transform: translateY(0vh) translateX(10vw) scale(0.4); }
+	20% { transform: translateY(-4vh) translateX(30vw) scale(0.6); }
+	30% { transform: translateY(1vh) translateX(50vw) scale(0.45); }
+	40% { transform: translateY(-2.5vh) translateX(70vw) scale(0.5); }
+	50% { transform: translateY(0vh) translateX(90vw) scale(0.45); }
+	60% { transform: translateY(0vh) translateX(110vw) scale(0.45); }
+	100% { transform: translateY(0vh) translateX(110vw) scale(0.45); }
+}
+
+/* home 2 */
+
+.hero {
+	background-image: radial-gradient(50% 176%, #336896 80%, #085071 100%);
+	/* min-height: 100vh; */
+	min-height: 30rem;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* align-content: center; */
+	
+	&__content {
+		position: relative;
+		align-self: center;
+		text-align: center;
+		padding: 3rem 0;
+	}
+}
+
+.snow {
+	position: absolute;
+	min-width: 100vw;
+	min-height: 100vh;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+.snow .svg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#snow-top-layer {
+	will-change: transform;
+	transform: translateY(-768px);
+	animation: fall 22.5s infinite linear;
+}
+
+#snow-bottom-layer {
+	will-change: transform;
+	transform: translateY(-768px);
+	animation: fall 45s infinite linear;
+}
+
+@keyframes fall {
+	
+	100% {
+		transform: translateY(0);
+	}
+	
+}
+

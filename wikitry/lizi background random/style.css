@@ -1,0 +1,13 @@
+body {
+    margin: 0; /* 移除 body 的默认 margin */
+    overflow: hidden; /* 隐藏超出视窗的内容，防止滚动条出现 */
+}
+
+canvas {
+	background-color: black;
+    display: block; /* 移除 canvas 底部默认的空白 */
+    position: fixed; /* 固定定位，使其覆盖整个视窗 */
+    top: 0;
+    left: 0;
+    z-index: -1; /* 将 canvas 放在背景层，内容可以在其上方显示 */
+}

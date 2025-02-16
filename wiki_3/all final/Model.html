@@ -1,29 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smooth Scrolling Demo</title>
-  <link rel="stylesheet" href="home_3.css">
+  <title>home with photo</title>
+  <link rel="stylesheet" href="style model.css">
+  <!-- 引用 Exo 2 字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Locomotive Scroll 样式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
 </head>
 <body>
-  <div class="description">
-    <div>
-      <h1>getScrollPosition() helper function</h1>
-      <p>
-        This helper function even works with the "containerAnimation" feature as seen here!  
-        Click the button below to scroll this page to the exact spot where the red section's tween starts.
-        <br><br>
-        <button id="scrollTo">scroll to red tween start</button>
-      </p>
-    </div>
-    <div class="scroll-down">
-      Scroll down
-      <div class="arrow"></div>
-    </div>
+    <!--------------------------------- navigation ------------------------------->
+    <nav id="mainNav">
+      <div class="navContainer">
+          <!-- 左端图标 -->
+          <div class="navLogo">
+              <img src="https://via.placeholder.com/40" alt="Logo">
+          </div>
+          <!-- 右端导航菜单 -->
+          <ul class="navMenu">
+              <li><a href="home_3.html">Home</a></li>
+              <li><a href="#">Team</a>
+                  <ul class="navSubmenu">
+                      <li><a href="team.html">Model</a></li>
+                      <li><a href="#">Roster</a></li>
+                      <li><a href="#">Attribution</a></li>
+                  </ul>
+              </li>
+              <li><a href="project.html">Project</a>
+                  <ul class="navSubmenu">
+                      <li><a href="content.html">Wet lab</a></li>
+                      <li><a href="#">Human Practice</a></li>
+                      <li><a href="#">Model</a></li>
+                  </ul>
+              </li>
+              <li><a href="#">Wet lab</a></li>
+              <li><a href="#">Human Practice</a></li>
+              <li><a href="Model.html">Model</a></li>
+          </ul>
+      </div>
+  </nav>
+
+    <div class="container">
+      <h1>Don't know</h1>
+      <div class="bird-container bird-container--one">
+          <div class="bird bird--one"></div>
+      </div>
+      <div class="bird-container bird-container--two">
+          <div class="bird bird--two"></div>
+      </div>
+      <div class="bird-container bird-container--three">
+          <div class="bird bird--three"></div>
+      </div>
+      <div class="bird-container bird-container--four">
+          <div class="bird bird--four"></div>
+      </div>
+  </div>
+
+  <div>
+    <h1>Welcome to my page</h1>
+    <p>内容瞎写的，照搬网络，照片随机选的</p>
   </div>
   
-  <div class="container">
+
+  <div class="spacer" data-scroll-section>
+    <h1>begin to scroll</h1>
+  </div>
+  
+
+  <!-- Locomotive Scroll 要求所有内容放在 data-scroll-container 内 -->
+  <div data-scroll-container>
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+      
+        <!-- 网格区块 -->
+        <div class="grid-section" data-scroll-section>
+          <div class="grid-layout">
+            <div class="column column-1" data-speed="1.1">
+              <div class="column-content">
+                <div class="grid-image">
+                  <img src="https://picsum.photos/800?random=1" alt="">
+                </div>
+                <div class="grid-image">
+                  <img src="https://picsum.photos/800?random=2" alt="">
+                </div>
+                <div class="grid-image">
+                  <img src="https://picsum.photos/800?random=3" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="column column-2" data-speed="1.01">
+              <div class="column-content">
+                <div class="grid-image">
+                  <img src="https://picsum.photos/800?random=4" alt="">
+                </div>
+                <div class="grid-image">
+                  <img src="https://picsum.photos/800?random=5" alt="">
+                </div>
+                <div class="grid-image">
+                  <img src="https://picsum.photos/800?random=6" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="column column-3" data-speed="1.1">
+              <div class="column-content">
+                <div class="grid-image">
+                  <img src="https://picsum.photos/800?random=7" alt="">
+                </div>
+                <div class="grid-image">
+                  <img src="https://picsum.photos/800?random=8" alt="">
+                </div>
+                <div class="grid-image">
+                  <img src="https://picsum.photos/800?random=9" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="spacer" data-scroll-section>
+          keep scrolling！ keep scrolling！
+        </div>
+      
+        <!-- 视差区块 -->
+        <section class="parallax-section" data-scroll-section>
+          <img class="parallax-image" src="https://picsum.photos/800?random=10" alt="">
+        </section>
+      
+        <div class="spacer" data-scroll-section></div>
+        
+        <div class="spacer" data-scroll-section>
+          keep scrolling！ keep scrolling！
+        </div>
+
+        <!-- 固定区块（横向滚动效果） -->
+        <div class="pin-section" data-scroll-section>
+          <div class="pin-content pin-content-1">
+            <div class="pin-box">
+              <img class="pin-image" src="https://picsum.photos/800?random=11" alt="">
+            </div>
+            <div class="pin-box">
+              <img class="pin-image" src="https://picsum.photos/800?random=12" alt="">
+            </div>
+            <div class="pin-box">
+              <img class="pin-image" src="https://picsum.photos/800?random=13" alt="">
+            </div>
+          </div>
+      
+          <div class="pin-content pin-content-2">
+            <div class="pin-box">
+              <img class="pin-image" src="https://picsum.photos/800?random=14" alt="">
+            </div>
+            <div class="pin-box">
+              <img class="pin-image" src="https://picsum.photos/800?random=15" alt="">
+            </div>
+            <div class="pin-box">
+              <img class="pin-image" src="https://picsum.photos/800?random=16" alt="">
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <div class="container">
     <div class="panel blue">
         向下滚动以水平制作动画 > &gt;
     </div>
@@ -112,7 +255,7 @@ ScrollTrigger.create({
         <li>Requires ScrollTrigger 3.8.0 or later</li>
       </ul>
     </div>
-  </div>
+  </div> -->
 
   <footer>
     <div>
@@ -163,11 +306,24 @@ ScrollTrigger.create({
       <p>&copy; 2025 Your Company. All rights reserved.</p>
     </div>
   </footer>
+
+  <!--------------------------------- Back to Top Button and progress-ring------------------------------->
+  <div id="backToTop" class="back-to-top">
+    <div class="progress-ring">
+        <svg width="60" height="60">
+            <circle class="progress-ring-circle" stroke="#003267" stroke-width="4" fill="transparent" r="28" cx="30" cy="30"/>
+        </svg>
+    </div>
+    <span class="arrow">↑</span>
+  </div>
   
-  <!-- GSAP 及免费插件 -->
+  <!-- GSAP 与 ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
-  <script src="home_3.js"></script>
+  <!-- Locomotive Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  <!-- 自定义脚本 -->
+  <script src="script model.js"></script>
 </body>
 </html>

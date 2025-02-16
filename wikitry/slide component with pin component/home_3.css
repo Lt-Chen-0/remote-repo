@@ -1,0 +1,593 @@
+
+/************* spacer 防止导航栏遮挡 ******************************************/
+.spacer {  
+  height: 90px; 
+  width: 100%; 
+}
+
+/********************************* Navigation ***************************/
+#mainNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-color: #F7FBFC; 
+  color: #336896;
+  align-items: center;
+  justify-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  z-index: 1000;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 0;
+}
+
+.navLogo {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.navLogo img {
+  height: 40px;
+}
+
+.navMenu {
+  list-style: none;
+  margin: 0.5em 1vw;
+  margin-right: 1vw;
+  padding: 0;
+  display: flex;
+}
+
+.navMenu li {
+  position: relative;
+  margin-left: 20px;
+}
+
+.navMenu li a {
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  color: #336896;
+  padding:  15px;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.navMenu li a:hover {
+  background-color: #ACD5E6; 
+}
+
+/* 子菜单 */
+.navSubmenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #F7FBFC;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 150px;
+}
+
+.navMenu li:hover .navSubmenu {
+  display: block;
+}
+
+.navSubmenu li a {
+  font-size: 20px;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+/*滚动时隐藏导航栏*/
+#mainNav.hideNav {
+  transform: translateY(-100%); /* 隐藏导航栏 */
+}
+
+#mainNav.hideNav::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 20px; /* 设置高度 */
+  background-color: transparent; /* 背景透明 */
+}
+
+
+/************************** hero 1 ******************/
+/* 基本排版 */
+body {
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1, h2 {
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+    
+  /* box 样式 */
+  .box {
+    width: 80%;
+    height: 33%;
+    text-align: center;
+    line-height: 80px;
+    background-color: white;
+    border-radius: 8px;
+    color: #222;
+    margin-left: 20px;
+    will-change: transform;
+  }
+  
+  .box.active {
+    background-color: orange;
+    border: 2px solid white;
+  }
+  
+  /* description 与 final 区块 */
+  .description, .final {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    min-height: 80vh;
+  }
+  
+  /* 横向滚动容器 */
+  .container {
+    width: 500%;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  
+  /* 每个 panel 的基础样式 */
+  .panel {
+    font-weight: 300;
+    flex-shrink: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* 为背景色做区分 */
+  .panel.blue { background-color:  #336896; }
+  .panel.red { background-color: #eceef0; }
+  .panel.gray { background-color: #d9dce0; }
+  .panel.purple { background-color:#ACD5E6; }
+  .panel.green { background-color: #D5EAF3; }
+
+/* hero 2 *************************************/
+/* 不改变 :root */
+:root {
+  box-sizing: border-box;
+  --green: #336896;
+  --dark: #000000;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Web Fonts */
+.font-bold {
+  font-family: "ITC Avant Garde Gothic Pro", sans-serif;
+  font-weight: 700;
+}
+.font-medium {
+  font-family: "ITC Avant Garde Gothic Pro", sans-serif;
+  font-weight: 500;
+}
+.font-book {
+  font-family: "ITC Avant Garde Gothic Pro", sans-serif;
+  font-weight: 300;
+}
+.font-slant {
+  /* 用斜体模拟 slant 效果 */
+  font-style: italic;
+}
+
+/* 全局样式 */
+body {
+  margin: 0;
+  background-color: #d6efff;
+  font-family: "ITC Avant Garde Gothic Pro", sans-serif;
+  color: var(--dark);
+}
+
+/* 外层容器 */
+#component-container {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px; /* 可根据实际情况调整 */
+}
+
+/* ========= Section1 组件 ========= */
+.section1 {
+  position: relative;
+  width: 98vw;
+  min-height: 400px;
+  background-color: var(--green);
+  border-radius: 12px;
+  overflow: hidden;
+  perspective: 1000px; /* 用于 3D 交互效果 */
+  
+  /* 初始状态：整体向下偏移并透明（模拟 gsap 从 yPercent:50 与 autoAlpha:0 效果） */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1) 1s, /* expo ease */
+              transform 1s cubic-bezier(0.19, 1, 0.22, 1) 1s;
+}
+
+/* 当加上 animate 类后，section1 回归正常 */
+.section1.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 内部文字容器 */
+.section1 .c-title {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+/* 标题文字 */
+.section1 .c-title .title-text {
+  /* font-size: clamp(24px, 4vw, 50px); */
+  font-size: 6vw;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+/* --- 各元素初始状态及动画 --- */
+
+/* info 本身无需额外动画（可与 container 同步） */
+.section1 .info {
+  /* 若有需要可以加额外延迟，这里保持直接显示 */
+}
+
+/* .title-1 .title-text 从下方进入 */
+.section1 .title-1 .title-text {
+  transform: translateY(100%);
+  transition: transform 1s ease 1.5s;
+}
+.section1.animate .title-1 .title-text {
+  transform: translateY(0);
+}
+
+/* .title-2 .title-text 从透明变为可见 */
+.section1 .title-2 .title-text {
+  opacity: 0;
+  transition: opacity 1.5s ease 2s;
+}
+.section1.animate .title-2 .title-text {
+  opacity: 1;
+}
+
+/* sub-title-1：右侧淡入 */
+.section1 .sub-title-1 {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.5s ease 1.5s, transform 0.5s ease 1.5s;
+}
+.section1.animate .sub-title-1 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* sub-title-2：左侧淡入 */
+.section1 .sub-title-2 {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.5s ease 1.5s, transform 0.5s ease 1.5s;
+}
+.section1.animate .sub-title-2 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* credit：底部淡入 */
+.section1 .credit {
+  opacity: 0;
+  transition: opacity 0.3s ease 2s;
+}
+.section1.animate .credit {
+  opacity: 1;
+}
+
+/* 指示器：始终显示（这里仅保留 pointer 动画效果） */
+.section1 .indicator {
+  margin-top: 20px;
+  font-size: clamp(24px, 4vw, 50px);
+}
+.section1 .indicator .pointer {
+  animation: pointDown 2.5s infinite;
+}
+@keyframes pointDown {
+  0% { transform: translateY(0); }
+  10% { transform: translateY(10px); }
+  20% { transform: translateY(0); }
+  30% { transform: translateY(10px); }
+  40% { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+/* 所有样式均限定在 #custom-pin-component 内，不会污染其他页面元素 */
+#custom-pin-component {
+  font-family: sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* 基本面板样式 */
+.cp-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* 为内部绝对定位做参照 */
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/* 如需顶部对齐 */
+.cp-align-top {
+  align-items: flex-start;
+}
+
+/* 各区域背景色 */
+.cp-blue { background: #ACD5E6; }
+.cp-orange { background: #f0f0f0; position: relative; }
+.cp-red { background: #336896; position: relative; }
+.cp-purple { background: rgb(208, 208, 208); }
+
+/* 标题与段落样式 */
+.cp-section h1 {
+  font-size: 2em;
+  margin: 0 0 10px 0;
+}
+.cp-section p {
+  font-size: 1em;
+  max-width: 800px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 滚动提示样式 */
+.cp-scroll-down {
+  margin-top: 20px;
+  font-size: 0.8em;
+  display: inline-block;
+}
+
+/* 以下样式用于被 pin 的内容 */
+#cp-orange-content,
+#cp-red-content {
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  padding: 10px;
+  width: 90%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+body {
+  background-color:#F7FBFC;
+  font-family: 'Exo 2', sans-serif;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;/*#6eaced*/
+  background-color: #5094d8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-top:hover {
+  background-color: #0052aa;
+}
+
+.back-to-top:active {
+  transform: scale(0.8);
+}
+
+/* Progress Ring */
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Arrow */
+.arrow {
+  color: white;
+  font-size: 30px;
+  position: relative;
+  z-index: 1;
+}
+  
+/* footer */
+/* Footer base styles */
+footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .contact-me {
+    margin-bottom: 20px;
+  }
+  
+  /* Wrapper styles */
+  .wrapper {
+    padding:0 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    /* 使用合法的 rgba 颜色写法 */
+    /* background-image: linear-gradient(to bottom right, rgba(129,194,222,1), rgba(79,146,172,1)); */
+    transition: all 0.4s ease-out;
+  }
+  
+  .wrapper__title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #191308;
+    margin-bottom: 1rem;
+  }
+  .wrapper__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+  }
+  
+  /* Social link color modifiers */
+  .social-link--linkedin {
+    color: #2d76b0;
+  }
+  
+  .social-link--github {
+    color: #000;
+  }
+  
+  .social-link--instagram {
+    color: #9a2970;
+  }
+  
+  .social-link--dribbble {
+    color: #b53561;
+  }
+  
+  /* Social svg default styles */
+  .social-link .social-svg {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+
+  .social-svg {
+    width: 4.8rem;
+    height: 4.8rem;
+    display: block;
+    margin: auto;
+  }
+  
+  
+  /* Social group elements inside svg */
+  .social-link .social-svg .social-group__icon {
+    fill: #191308;
+    transition: all 0.2s;
+  }
+  
+  .social-link .social-svg .social-group__inner-circle {
+    fill: transparent;
+    transition: all 0.2s;
+  }
+  
+  .social-link .social-svg .social-group__outline {
+    stroke: #191308;
+    transform-origin: 50% 50%;
+    transition: all 0.2s;
+  }
+  
+  /* Hover, active, focus states for social svg */
+  .social-link .social-svg:hover .social-group__icon,
+  .social-link .social-svg:active .social-group__icon,
+  .social-link .social-svg:focus .social-group__icon {
+    fill: #FFFBFA;
+    transition: all 0.45s;
+  }
+  
+  .social-link .social-svg:hover .social-group__inner-circle,
+  .social-link .social-svg:active .social-group__inner-circle,
+  .social-link .social-svg:focus .social-group__inner-circle {
+    fill: currentColor;
+    transition: all 0.45s;
+  }
+  
+  .social-link .social-svg:hover .social-group__inner-circle--instagram,
+  .social-link .social-svg:active .social-group__inner-circle--instagram,
+  .social-link .social-svg:focus .social-group__inner-circle--instagram {
+    fill: url(#simpleInsta) !important;
+  }
+  
+  .social-link .social-svg:hover .social-group__outline,
+  .social-link .social-svg:active .social-group__outline,
+  .social-link .social-svg:focus .social-group__outline {
+    stroke: currentColor;
+    transform: scale(1.1);
+    transition: all 0.45s;
+  }
+  
+  /* Horizontal rule styling */
+  hr {
+    width: 50%;
+    margin: 20px auto;
+    border: 0;
+    border-top: 1px solid #ccc;
+  }
+  
+  /* Copyright styling */
+  .copyright {
+    font-size: 14px;
+    color: #666;
+  }
+  
