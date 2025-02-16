@@ -9,19 +9,26 @@
  - 配色，字体：https://2024.igem.wiki/heidelberg/
  - 动画：
     - 飞鸟，雪花：https://blog.csdn.net/frontlab/article/details/121892114
-    - 雪花背景：
+    - 雪花背景：学长分享的https://www.awwwards.com/websites/
+      - https://immersive-g.com/，启发可以做文字背景，但是做的和这个比肯定小巫见大巫
 
  2.**Home_3**：
- - 动画：复旦大学线上WIKI交流活动：分享pdf中的GSAP，https://gsap.com/，发现了：https://gsap.com/demos/?page=1，是三个功能的混合搭配
-  - https://codepen.io/vanholtzco/pen/abEOead
-  - https://codepen.io/GreenSock/pen/xxPNyyO
-  - 还有一个忘了
+ - 动画：
+   - 资料：复旦大学线上WIKI交流活动：分享pdf中的GSAP，https://gsap.com/，发现了：https://gsap.com/demos/?page=1，是三个功能的混合搭配
+     - https://codepen.io/vanholtzco/pen/abEOead
+     - https://codepen.io/GreenSock/pen/xxPNyyO
+     - 还有一个忘了
+   - 启发：学长分享的https://www.awwwards.com/websites/
+     - 学长分享的https://www.awwwards.com/websites/ 
  * ps：其中一些库要付费，所以大多数功能都是重写的，用js和一些免费库实现的。
 - 配色，字体：同上
 
 
  3.**Model/home with photo scroll（unfinished）**：
- - 动画：GASP https://codepen.io/collection/BNMEYN ，中的一个
-  - https://codepen.io/GreenSock/pen/NWXgqyK
+ - 动画：
+    - 资料： GASP https://codepen.io/collection/BNMEYN ，中的一个
+      - https://codepen.io/GreenSock/pen/NWXgqyK
+    - 启发：学长分享的https://www.awwwards.com/websites/
+     - 学长分享的https://www.awwwards.com/websites/
  - 配色，字体：同上
- - 这个比较卡
+ - 这个有时候比较卡
