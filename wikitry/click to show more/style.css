@@ -1,0 +1,32 @@
+.expandable-component {
+    font-family: "Exo 2", sans-serif;
+    margin: 20px;
+  }
+  
+.toggle-button {
+    width: 100%;
+    background-color: #5e7e8f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+  
+.toggle-button .expandable-component-arrow {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+  
+.toggle-button.expanded .expandable-component-arrow {
+    transform: rotate(180deg);
+}
+  
+.expandable-component-content {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    transition: height 0.3s ease;
+}
