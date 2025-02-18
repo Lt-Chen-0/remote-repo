@@ -1,0 +1,39 @@
+.custom-table-container {
+    width: 100%;
+    overflow-x: auto; /* 水平滚动条，以防表格内容溢出 */
+  }
+  
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse; /* 合并边框 */
+    margin-bottom: 20px; /* 表格底部留出一些空间 */
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden; /* 隐藏表格的圆角以外的内容 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /*  হালকা ছায়া */
+  }
+  
+  .custom-table-header th {
+    background-color: #f0f0f0;
+    color: #555;
+    font-weight: bold;
+    text-align: left; /* 文本左对齐 */
+    padding: 12px 15px;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .custom-table-body td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left; /* 文本左对齐 */
+  }
+  
+  .custom-table-body tr:nth-child(even) {
+    background-color: #f9f9f9; /* 偶数行背景色 */
+  }
+  
+  .custom-table-body tr:last-child td {
+    border-bottom: none; /* 移除最后一行底部的边框 */
+  }

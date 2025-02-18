@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>home with photo</title>
   <link rel="stylesheet" href="style model.css">
-  <!-- 引用 Exo 2 字体 -->
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+  <!-- 引用 Exo 2 字体
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet"> -->
   <!-- Locomotive Scroll 样式 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
 </head>
@@ -166,98 +166,6 @@
       </div>
     </div>
   </div>
-
-
-  <!-- <div class="container">
-    <div class="panel blue">
-        向下滚动以水平制作动画 > &gt;
-    </div>
-    
-    <section class="panel red">
-      <div>
-        <pre class="code-block prettyprint lang-js linenums">
-gsap.to(".box-1", {
-  y: -130,
-  duration: 2,
-  ease: "elastic",
-  scrollTrigger: {
-    trigger: ".red",
-    start: "center center",
-    toggleActions: "play none none reset"
-  }
-});
-        </pre>
-        Fire an animation at a particular spot...
-      </div>
-      <div class="box-1 box">box-1</div>
-    </section>
-    
-    <section class="panel gray">
-      <div>
-        <pre class="code-block prettyprint lang-js linenums">
-gsap.to(".box-2", {
-  y: -120,
-  backgroundColor: "#1e90ff",
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".gray",
-    start: "top center",
-    end: "bottom center",
-    scrub: true
-  }
-});
-        </pre>
-        ...or scrub it back &amp; forth with the scrollbar
-      </div>
-      <div class="box-2 box">box-2</div>
-    </section>
-    
-    <section class="panel purple">
-      <div>
-        <pre class="code-block prettyprint lang-js linenums">
-ScrollTrigger.create({
-  trigger: ".purple",
-  start: "center center",
-  onEnter: () => document.querySelector(".box-3").classList.add("active"),
-  onLeaveBack: () => document.querySelector(".box-3").classList.remove("active")
-});
-        </pre>
-        Toggle a CSS class
-      </div>
-      <div class="box-3 box">box-3</div>
-    </section>
-    
-    <section class="panel green">
-      <div>
-        <pre class="code-block prettyprint lang-js linenums">
-ScrollTrigger.create({
-  trigger: ".green",
-  start: "top center",
-  end: "bottom center",
-  onEnter: () => console.log("enter"),
-  onLeave: () => console.log("leave"),
-  onEnterBack: () => console.log("enterBack"),
-  onLeaveBack: () => console.log("leaveBack"),
-  onToggle: self => console.log("active", self.isActive)
-});
-        </pre>
-        Use the rich callback system
-      </div>
-    </section>
-  </div>
-  
-  <div class="final">
-    <div>
-      <h1>Wasn't that fun?</h1>
-      <p>Here are a few caveats to keep in mind:</p>
-      <ul>
-        <li>The fake-scrolling animation (just the part that's moving the container horizontally) must have no easing (<code>ease: "none"</code>).</li>
-        <li>Pinning and snapping won’t work on ScrollTriggers tied to containerAnimation (this demo uses only free features).</li>
-        <li>The mapping of scroll trigger points in the original demo was based on the trigger element inside an animated container. Here we use fixed trigger positions.</li>
-        <li>Requires ScrollTrigger 3.8.0 or later</li>
-      </ul>
-    </div>
-  </div> -->
 
   <footer>
     <div>

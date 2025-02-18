@@ -5,9 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <link rel="stylesheet" href="home_3.css">
-  <!-- 引用 Exo 2 字体 -->
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+  <!-- 引用 Exo 2 字体
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet"> -->
+  <!-- mathjax链接公式库 -->
 
+  <script>
+    MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']], // 定义行内公式的定界符
+        displayMath: [['$$', '$$'], ['\\[', '\\]']] // 添加块级公式的定界符
+    },
+    
+    svg: {
+        fontCache: 'global'
+    },
+    options: {
+        renderActions: {
+        addMenu: [], // 禁用右键菜单
+        assistiveMml: [] // 禁用辅助功能
+        }
+    }
+    };
+</script>
 </head>
 <body>
     <!--------------------------------- navigation ------------------------------->
@@ -120,103 +139,97 @@
     
     <section class="panel three">
 
-      <!-- 队员卡容器 -->
-      <div class="team-cards-container">
-        <!-- 标题 -->
-        <div class="team-cards-header">
-            <div class="team-cards-group">Hover To Read More</div>
-        </div>
+        <!-- 队员卡容器 -->
+        <div class="team-cards-container">
+          <!-- 标题 -->
+          <div class="team-cards-header">
+              <div class="team-cards-group">Our Team</div>
+          </div>
 
-        <!-- 队员卡 -->
-        <div class="team-cards">
-            <!-- 队员 1 -->
-            <div class="team-card">
-                <div class="team-photo">
-                    <img src="https://images.freeimages.com/variants/bons48ES8GrHsjNMqNTXidAt/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&h=350" alt="Team Member 1">
-                </div>
-                <div class="team-card-description">
-                    <!-- <div class="team-name">Tao Hu</div>
-                    <div class="team-role">Wangsheng Funeral Parlor</div>
-                    <h3>Motto</h3> -->
-                    <div class="team-motto">Yin and Yang are orderly, fate is unpredictable.<br>图片随便找的，内容随便粘贴的。</div>
-                </div>
-            </div>
+          <!-- 队员卡 -->
+          <div class="team-cards">
+              <!-- 队员 1 -->
+              <div class="team-card">
+                  <div class="team-photo">
+                      <img src="https://upload-bbs.miyoushe.com/upload/2021/08/21/35010196/4a62b8e3c45c7685f7a85e7851333bed_988524263343969597.jpg" alt="Team Member 1">
+                  </div>
+                  <div class="team-card-description">
+                      <div class="team-name">Tao Hu</div>
+                      <div class="team-role">Wangsheng Funeral Parlor</div>
+                      <h3>Motto</h3>
+                      <div class="team-motto">Yin and Yang are orderly, fate is unpredictable</div>
+                  </div>
+              </div>
 
-            <!-- 队员 2 -->
-            <div class="team-card">
-                <div class="team-photo">
-                    <img src="https://images.freeimages.com/images/large-previews/03e/oxford-architecture-1233371.jpg?fmt=webp&h=350" alt="Team Member 2">
-                </div>
-                <div class="team-card-description">
-                    <!-- <div class="team-name">Jane Smith</div>
-                    <div class="team-role">UI/UX Designer</div>
-                    <h3>About Me</h3> -->
-                    <div class="team-motto">
-                      Because of their tiny particle size, microplastics are easily
-                      ingested and accumulated by organisms in mangrove ecosystems.
-                    </div>
-                </div>
-            </div>
+              <!-- 队员 2 -->
+              <div class="team-card">
+                  <div class="team-photo">
+                      <img src="https://via.placeholder.com/300" alt="Team Member 2">
+                  </div>
+                  <div class="team-card-description">
+                      <div class="team-name">Jane Smith</div>
+                      <div class="team-role">UI/UX Designer</div>
+                      <h3>About Me</h3>
+                      <div class="team-motto">"Design with purpose."</div>
+                  </div>
+              </div>
 
-            <!-- 队员 3 -->
-            <div class="team-card">
-                <div class="team-photo">
-                    <img src="https://images.freeimages.com/variants/zKZrY88gFLVY6XkaQczHEb3R/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&h=350" alt="Team Member 3">
-                </div>
-                <div class="team-card-description">
-                    <!-- <div class="team-name">Mike Johnson</div>
-                    <div class="team-role">Backend Developer</div>
-                    <h3>About Me</h3> -->
-                    <div class="team-motto">These mi- croplastics may then be passed through the food chain,
-                      affecting the health of higher-level organ- isms and may even end
-                      up in the human food chain, posing a po- tential threat to human
-                      health.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- <div class="box-2 box">box-2
-      <p>文本框</p>
-    </div> -->
-  </section>
-  
-  <section class="panel four">
-    <div class="expandable-component">
-      <button class="toggle-button">
-        <span class="expandable-component-arrow">▼</span> Click To Read More
-      </button>
-      <div class="expandable-component-content" hidden>
-        <p>
-          Colleges and universities have invested a significant amount of
-          time and resources to ensure that their iGEM teams receive the
-          necessary support for success in the competition. Although
-          school websites and iGEM's official online resources provide
-          ample information, they often lack the ability to offer
-          personalized, real-time responses to teams. For example, when
-          iGEM team members need guidance on how to submit project
-          results, find suitable laboratory protocols, or determine which
-          safety regulations apply to their designs, they must search
-          through numerous resources. This process can be time-consuming,
-          and team members may still struggle to find the necessary
-          information due to its lack of clarity or overly technical
-          nature.
-        </p>
+              <!-- 队员 3 -->
+              <div class="team-card">
+                  <div class="team-photo">
+                      <img src="https://via.placeholder.com/300" alt="Team Member 3">
+                  </div>
+                  <div class="team-card-description">
+                      <div class="team-name">Mike Johnson</div>
+                      <div class="team-role">Backend Developer</div>
+                      <h3>About Me</h3>
+                      <div class="team-motto">"Keep it simple."</div>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
-    <!-- <div>
-      
-    </div>
-    <div class="box-3 box">box-3
-      <p>Ending！</p>
-    </div> -->
-  </section>
-  
-  <!-- <section class="panel five">
-    <div>
-            
-    </div>
-  </section> -->
+
+      <!-- <div class="box-2 box">box-2
+        <p>文本框</p>
+      </div> -->
+    </section>
+    
+    <section class="panel four">
+      <div class="expandable-component">
+        <button class="toggle-button">
+          <span class="expandable-component-arrow">▼</span> Click To Read More
+        </button>
+        <div class="expandable-component-content" hidden>
+          <p>
+            Colleges and universities have invested a significant amount of
+            time and resources to ensure that their iGEM teams receive the
+            necessary support for success in the competition. Although
+            school websites and iGEM's official online resources provide
+            ample information, they often lack the ability to offer
+            personalized, real-time responses to teams. For example, when
+            iGEM team members need guidance on how to submit project
+            results, find suitable laboratory protocols, or determine which
+            safety regulations apply to their designs, they must search
+            through numerous resources. This process can be time-consuming,
+            and team members may still struggle to find the necessary
+            information due to its lack of clarity or overly technical
+            nature.
+          </p>
+        </div>
+      </div>
+      <!-- <div>
+        
+      </div>
+      <div class="box-3 box">box-3
+        <p>Ending！</p>
+      </div> -->
+    </section>
+    
+    <!-- <section class="panel five">
+      <div>
+              
+      </div>
+    </section> -->
   </div>
   
   <!--------------------------------- hero 3 垂直动画，组件容器   --------------------------->
@@ -252,12 +265,129 @@
       </p>
     </section>
     
+  </div>
+
+  <section class="cp-section cp-three" style="background-color: #F7FBFC;">
+    <div class="content">          
+      <section id="contentSection1">
+      <div class="content-block"></div>
+          <p>
+              图片，pdf，公式等在下面
+          </p>
+          <p>
+                  The equation is converted into integral form as follows:
+              $$\frac{\partial}{\partial t}\int_{V}\rho\mathrm{dV}+\oint_{\partial V}\rho(\boldsymbol{v}\cdot\boldsymbol{n})\mathrm{dS}=0 \tag{13}$$
+              $$\begin{aligned}
+              \frac{\partial}{\partial t}\int_{V}\rho\boldsymbol{v}\mathrm{dV}+ \oint_{\partial V}\rho\boldsymbol{v}(\boldsymbol{v}\cdot\boldsymbol{n})\mathrm{dS}= 
+              \int_{V}\rho\boldsymbol{f}_{e}\mathrm{dV}-\oint_{\partial V}p\cdot\boldsymbol{n}\mathrm{dS}+ \oint_{\partial V}(\overline{\tau}^{\prime}\cdot\boldsymbol{n})\mathrm{dS}
+              \end{aligned} \tag{14}$$        
+          </p>
+          <p>In the conducted experiment, the mangrove population and soil
+              samples were sourced from the Qi'ao-Dangan Island Nature Reserve
+              located in Zhuhai, Guangdong Province (longitude: 113.635706°,
+              Where $\textbf{Z}$ represents the matrix of water level
+                  observations, $\textbf{K}$ represents the coefficient matrix, and
+                  $\textbf{U}$ represents the parameter matrix of substitution. The
+                  specific expression of each matrix is as follows: $$ \textbf{Z} =
+                  \left\lbrack Z\left( t_{1} \right),Z\left( t_{2}
+                  \right),\cdots,Z\left( t_{T} \right) \right\rbrack^{T} \tag{7} $$
+                  $$ \textbf{K} = \begin{pmatrix} f_{1,t_1} & \cdots & f_{N_1,t_1} &
+                  f_{1,t_1}cos\sigma_1t_1 & \cdots & f_{1,N_2}sin\sigma_Nt_1 \\
+                  f_{1,t_2} & \cdots & f_{N_1,t_2} & f_{1,t_2}cos\sigma_1t_2 &
+                  \cdots & f_{1,N_2}sin\sigma_Nt_2 \\ \vdots & \ddots & \vdots &
+                  \vdots & \ddots & \vdots \\ f_{1,t_T} & \cdots & f_{N_1,t_T} &
+                  f_{1,t_T}cos\sigma_1t_T & \cdots & f_{1,N_2}sin\sigma_Nt_T \\
+                  \tag{8} \end{pmatrix} $$ $$ \textbf{U} = \begin{pmatrix} & S_1 &
+                  \cdots & S_{N_1} \\ & a_{1,1} & \cdots & a_{N_1,1} & \cdots &
+                  a_{1,N} & \cdots & a_{N_1,N} \\ & b_{1,1} & \cdots & b_{N_1,1} &
+                  \cdots & b_{1,N} & \cdots & b_{N_1,N} \end{pmatrix}^T \tag{9} $$
+          </p>
+          <p>In the conducted experiment, the mangrove population and soil
+              samples were sourced from the Qi'ao-Dangan Island Nature Reserve
+              located in Zhuhai, Guangdong Province (longitude: 113.635706°,
+              latitude: 22.414662°), and an observation station with tidal and
+              other hydrological data was established near this location.
+              Consequently, the proposed model takes this specific location as a
+              representative case and conduct a harmonic analysis of tidals, and
+              find the solution of the amplitude and the tidal epoch of each</p>
+
+      </section>
+  
+      <div class="pdf-embed">
+          <p>Here is an embedded PDF:</p>
+          <iframe src="https://static.igem.wiki/teams/5291/images/model/tidal-amplitude-and-phase-with-95-ci-estimates.pdf" width="100%" height="500px"></iframe>
+      </div>
+  
+      <div class="image-grid">
+          <div class="image-item">
+              <img src="https://static.igem.wiki/teams/5291/images/model/raw-tidal-height-data.png" alt="Image 1">
+              <p>Description for Image 1</p>
+          </div>
+          <div class="image-item">
+              <img src="https://static.igem.wiki/teams/5291/images/model/raw-tidal-height-data.png" alt="Image 2">
+              <p>Description for Image 2</p>
+          </div>
+          <div class="image-item">
+              <img src="https://static.igem.wiki/teams/5291/images/model/raw-tidal-height-data.png" alt="Image 3">
+              <p>Description for Image 3</p>
+          </div>
+          <div class="image-item">
+              <img src="https://static.igem.wiki/teams/5291/images/model/raw-tidal-height-data.png" alt="Image 4">
+              <p>Description for Image 4</p>
+          </div>
+      </div>
+  
+      <section id="contentSection2">
+      <h1>Overview</h1>
+      <h3 style="color: #c62e65;">This is the table section.</h3>
+      
+      <div class="custom-table-container">
+          <table class="custom-table">
+          <thead class="custom-table-header">
+              <tr>
+              <th>列1</th>
+              <th>列2</th>
+              <th>列3</th>
+              </tr>
+          </thead>
+          <tbody class="custom-table-body">
+              <tr>
+              <td>数据 1-1</td>
+              <td>数据 1-2</td>
+              <td>数据 1-3</td>
+              </tr>
+              <tr>
+              <td>数据 2-1</td>
+              <td>数据 2-2</td>
+              <td>数据 2-3</td>
+              </tr>
+              <tr>
+              <td>数据 3-1</td>
+              <td>数据 3-2</td>
+              <td>数据 3-3</td>
+              </tr>
+          </tbody>
+          </table>
+      </div>
+          <p>In the conducted experiment, the mangrove population and soil
+              samples were sourced from the Qi'ao-Dangan Island Nature Reserve
+              located in Zhuhai, Guangdong Province (longitude: 113.635706°,
+              latitude: 22.414662°), and an observation station with tidal and
+              other hydrological data was established near this location.
+              Consequently, the proposed model takes this specific location as a
+              representative case and conduct a harmonic analysis of tidals, and
+              find the solution of the amplitude and the tidal epoch of each
+              tidal constituent.</p>
+      </section>
+  </div>
+  </section>
+
+    
     <!-- 第四部分：尾部内容 -->
     <section class="cp-section cp-three">
       <h1>Ending!</h1>
     </section>
     
-  </div>
 
   <div class="final">
     <div> 
@@ -344,5 +474,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
   <script src="home_3.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
 </body>
 </html>
