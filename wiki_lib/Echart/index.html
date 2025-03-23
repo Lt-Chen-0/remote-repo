@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+</head>
+<body>
+  <div id="igemChart" style="width: 800px; height: 500px;margin: auto;"></div>
+  <div id="main" style="width: 600px;height:400px;margin: auto;"></div>
+  <div id="scatter" style="width: 600px;height:400px;margin: auto;"></div>
+  <script>
+    const chart = echarts.init(document.getElementById('igemChart'));
+    const option = {
+      // 标题
+      title: { 
+        text: '基因编辑效率对比' ,// 标题文本
+        textStyle: { color: '#333', fontSize: 24, fontWeight: 'bold' }, // 标题文字样式
+        left: 'center', // 标题水平居中
+      },
+      // 提示框
+      tooltip: {},
+      // 图例
+      legend: { 
+        data: ['CRISPR', 'TALEN', 'ZFN'], // 图例数据，需与 series 中的 name 对应
+        top: 40, // 图例距离顶部的距离
+        orient: 'horizontal', // 图例布局方向：horizontal（水平）/vertical（垂直）
+        textStyle: { color: '#333' } // 图例文字颜色
+    },
+      xAxis: { type: 'category', data: ['CRISPR', 'TALEN', 'ZFN'] },
+      yAxis: { type: 'value', name: '效率 (%)' },
+      // 数据
+      series: [{
+          name: 'CRISPR', // 必须与 legend.data 中的名称一致
+          type: 'bar',
+          data: [85,0,0],
+          itemStyle: { color: '#66b3ff' }
+        },
+        {
+          name: 'TALEN',
+          type: 'bar',
+          data: [0,70,0],
+          itemStyle: { color: '#ff9999' }
+        },
+        {
+          name: 'ZFN',
+          type: 'bar',
+          data: [0,0,60],
+          itemStyle: { color: '#99ff99' }
+        }]
+    };
+    var myChart = echarts.init(document.getElementById('main'));
+ 
+        // 指定图表的配置项和数据
+        var option2 = {
+                title : {
+                    text: '用户访问来源',
+                    subtext: '纯属虚构',
+                    x:'center' ,
+                    textStyle: { color: '#333', fontSize: 24, fontWeight: 'bold' }, // 标题文字样式
+                },
+                tooltip : {
+                    trigger: 'item'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left' 
+                },
+                series : [
+                    {
+                        name: '访问来源',
+                        type: 'pie',
+                        radius: '55%',
+                        roseType: 'angle',
+                        data:[
+                            {value:235, name:'视频广告'},
+                            {value:274, name:'联盟广告'},
+                            {value:310, name:'邮件营销'},
+                            {value:335, name:'直接访问'},
+                            {value:400, name:'搜索引擎'}
+                        ]
+                    }
+                ]
+            };
+    const scatter = echarts.init(document.getElementById('scatter'));
+
+    // 指定图表的配置项和数据
+    var option3 = {
+      title: {
+        text: '散点图示例',
+        textStyle: { color: '#333', fontSize: 24, fontWeight: 'bold' }, // 标题文字样式 
+        left: 'center' // 标题水平居中
+      },
+      tooltip: {
+      },
+      legend: {
+         left: 'left',
+      },
+      xAxis: {
+        type: 'value',
+        xAxisIndex: 0 // 显式指定 x 轴索引为 0
+      },
+      yAxis: {
+          type: 'value',
+          yAxisIndex: 0 // 显式指定 y 轴索引为 0
+      },
+      dataZoom: [
+          {   // 这个dataZoom组件，默认控制x轴。
+              type:'inside', // 这个 dataZoom 组件是 inside 型 dataZoom 组件 
+              xAxisIndex: [0], // 控制 x 轴（索引为 0）
+              yAxisIndex: [0], // 新增：控制 y 轴（索引为 0）
+              start: 10,      // 左边在 10% 的位置。
+              end: 60,        // 右边在 60% 的位置。
+              filterMode: 'empty', // 过滤模式：空数据。
+          },
+          {   // 这个dataZoom组件，默认控制x轴。
+              type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+              xAxisIndex: [0],
+              start: 10,      // 左边在 10% 的位置。
+              end: 60 ,        // 右边在 60% 的位置。
+              filterMode: 'filter', // 过滤模式：过滤。
+          }
+      ],
+      series: [
+          {
+              type: 'scatter', // 这是个『散点图』
+              itemStyle: {
+                  opacity: 0.8
+              },
+              symbolSize: function (val) {
+                  return val[2] * 40;
+              },
+              data: [["14.616","7.241","0.896"],["3.958","5.701","0.955"],["2.768","8.971","0.669"],["9.051","9.710","0.171"],["14.046","4.182","0.536"],["12.295","1.429","0.962"],["4.417","8.167","0.113"],["0.492","4.771","0.785"],["7.632","2.605","0.645"],["14.242","5.042","0.368"]]
+          }
+      ]
+    }
+
+    // 使用刚指定的配置项和数据显示图表。
+    chart.setOption(option);
+    myChart.setOption(option2);
+    scatter.setOption(option3);
+  </script>
+</body>
+</html>

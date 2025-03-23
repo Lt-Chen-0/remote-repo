@@ -130,6 +130,7 @@ mainNav.addEventListener('mouseenter', () => {
     mainNav.classList.remove('hideNav');
 });
 
+
 // 鼠标离开后，根据滚动位置决定是否隐藏导航栏
 mainNav.addEventListener('mouseleave', () => {
     isMouseHovering = false;
