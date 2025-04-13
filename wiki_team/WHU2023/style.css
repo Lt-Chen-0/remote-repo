@@ -1,0 +1,619 @@
+body { padding-top: 56px;
+    font-family: 'Montserrat', sans-serif;
+   font-weight: 400;
+}
+
+#cursor-1{
+   position:fixed;
+   z-index:9999999;
+   left:0;
+   top:0;
+   width: 30px;
+   height: 30px;
+   filter: drop-shadow(0px 0px 2px #ffb2ff);
+   background-image: url(https://static.igem.wiki/teams/4630/wiki/webpage/navbar/cursor-2.svg);
+   background-size: contain;
+ }
+
+.page-content {
+	padding:0;
+	max-width:100%;
+	margin-top: 0;
+	z-index: 10;
+	position: absolute;
+	top: 42.45vw;
+}
+.the-real-page-content-idk-but-the-padding-got-a-little-glitchy-i-am-really-tired {
+	padding:0 5vw 2vw 5vw;
+	width:100vw;
+	max-width:100%
+}
+/*以下是是电梯导航栏样式*/
+.side-nav::-webkit-scrollbar {display:none}
+.side-nav::-ms-scrollbar {display:none}
+.side-nav {scrollbar-width:none;
+}
+.side-nav {
+	list-style: none;
+	position: sticky;
+	top:15vh;
+	display: block;
+	height:75vh;
+	overflow-y: scroll;
+	margin-bottom: 150px;
+	padding-top:20px;
+	scrollbar-width: none;
+}
+.page-subtitle a {
+	text-decoration: none;
+	line-height:25px;
+	color:#3dabfe;
+}
+.page-secondary-title a {
+	text-decoration: none;
+	line-height:20px;
+	color:#9fd5ff;
+}
+.page-subtitle a:hover {
+	text-decoration: none;
+	color:#5CB8FF;
+	text-shadow:0 0 2px #a6ddff;
+}
+.page-secondary-title a:hover {
+	text-decoration: none;
+	color:#86cbff;
+	text-shadow:0 0 2px #cfedff;
+}
+
+/*蓝色竖线
+
+div.side-nav::before {
+	content:'';
+	position:absolute;
+	left:11px;
+	top:0;
+	height:var(--progress-height);
+	width:1px;
+	border-left:4px solid #fb96ff;
+	clip-path: inset(30px 0);
+}
+div.side-nav::after {
+	content:'';
+	position:absolute;
+	left:11px;
+	top:0;
+	height:100%;
+	width:1px;
+	border-left:4px solid #5CB8FF;
+	clip-path: inset(30px 0);
+}*/
+/*重写的断开的蓝色竖线*/
+.side-nav div {
+	margin:0;
+}
+
+div.page-subtitle > li {
+	height:fit-content;
+	padding-left:20px;
+	border-left:4px solid #5CB8FF;
+	transition:0.5s border-left;
+	padding-top:0PX;
+	padding-bottom:25px;
+}
+
+div.page-secondary-title > li {
+	height:fit-content;
+	padding-left:20px;
+	border-left:4px solid #5CB8FF;
+	transition:0.5s border-left;
+	padding-top:0PX;
+	padding-bottom:25px;
+}
+
+
+/*div.page-secondary-title > li {
+	height:fit-content;
+	padding-left:10px;
+	border-left:4px solid #5CB8FF;
+	padding-bottom:10px;
+	padding-top:10px;
+}*/
+
+.page-subtitle {
+	font-size: 20px;
+	line-height: 20px;
+	font-weight: 600;
+}
+.page-secondary-title {
+	font-size:17px;
+	line-height: 17px;
+	font-weight: 600;
+}
+/*蓝色空心圆圈*/
+.page-subtitle::before {
+	content:'';
+	background: #fff8ff;
+	position:absolute;
+	transform:translateX(-80%) translateY(-40%);
+	box-shadow: inset 0PX 0PX 0PX 4PX #5CB8FF;
+	margin: 10px;
+	width: 27px;
+	height: 27px;
+	border-radius: 50%;
+}
+.page-secondary-title::before {
+	content:'';
+	background: #fff8ff;
+	position:absolute;
+	transform:translateX(-92%) translateY(-53%);
+	box-shadow: inset 0PX 0PX 0PX 4PX #86cbff;
+	margin: 10px;
+	width: 19px;
+	height: 19px;
+	border-radius: 50%;
+}
+/*以下是划过之后的粉色圆圈效果*/
+div.page-subtitle > li.active ::before{
+	z-index:2;
+	content:'';
+	opacity: 0%;
+	background: linear-gradient(to left, #c696ff 0%, #fb96ff 50%, #ffa3d7 100%);
+	box-shadow: 0px 0px 5px #ffb2ff;
+	position:absolute;
+	transform:translateX(-168%) translateY(-40%);
+	margin: 10px;
+	width: 27px;
+	height: 27px;
+	border-radius: 50%;
+	animation: side-nav-circle-ani 1s ease-in-out 0.3s 1 forwards;
+}
+div.page-secondary-title > li.active ::before {
+	z-index:2;
+	content:'';
+	opacity: 0;
+	background: #FB96FF;
+	position:absolute;
+	transform:translateX(-218%) translateY(-53%);
+	box-shadow: 0px 0px 5px #ffb2ff;
+	margin: 10px;
+	width: 19px;
+	height: 19px;
+	border-radius: 50%;
+	animation: side-nav-circle-ani 0.5s ease-in 0.3s 1 forwards;
+}
+@keyframes side-nav-circle-ani {
+	0% {
+		opacity: 50%;
+	}
+
+	100% {
+		opacity:100%;
+	}
+}
+/*激活后的粉色线段*/
+/*li.first-li ::after{
+	display: none;
+}
+li.active ::after{
+	z-index:0;
+	content:'';
+	position:absolute;
+	left:11px;
+	width:1px;
+	height:35px;
+	transform:translateY(-80%);
+	transform-origin: left top;
+	border-left:4px solid #FB96FF;
+	box-shadow: 0px 0px 5px #ffb2ff;
+	animation: pink-line-ani 0.5s ease-in-out forwards;
+	
+}
+@keyframes pink-line-ani {
+	from {
+		transform-origin: left top;
+		transform:translateY(-80%) scaleY(0.1);
+	}
+	to {
+		transform-origin: left top;
+		transform:translateY(-80%) scaleY(1);
+	}
+}
+*/
+div.page-subtitle > li.active a {
+	animation: font-turn-purple 0.5s ease-in 0.3s 1 forwards;
+}
+div.page-secondary-title > li.active a {
+	animation: font-turn-pink 0.5s ease-in 0.3s 1 forwards;
+}
+
+@keyframes font-turn-pink {
+	from {color: #5CB8FF;}
+	to {color: #FFA3D7;text-shadow: 0px 0px 2px #ffb2ff80;}
+}
+ 
+@keyframes font-turn-purple {
+	from {color: #5CB8FF;}
+	to {color: #c696ff;text-shadow: 0px 0px 2px #ffb2ff80;}
+}
+/*电梯导航栏结束*/
+
+/*原来文件带的*/
+.left-aligned { margin-left: auto; }
+.bg-dark { background-color: #f3ffff !important; }
+.bg-hero { background-color: #45b06cff; }
+
+/*正文样式*/
+div.col-lg-9 {
+	padding-left: 30PX;
+}
+div.col-lg-9 > section::before {
+	content: "";
+	display: block;
+	z-index:-10;
+	position:relative;
+	height: 66px;
+	margin: -66px 0 0;
+	background:transparent;
+}
+div.col-lg-9 > section p, div.col-lg-9 > section ul,div.col-lg-9 > section li,div.col-lg-9 > section figcaption {
+	position:relative;
+	z-index:1;
+}
+div.col-lg-9 > section {
+	position:relative;
+}
+/*链接*/
+.col-lg-9 a {
+	color:#ffa3d7;
+	font-weight:inherit;
+}
+.col-lg-9 a:hover {
+	color:#C696FF;
+	font-weight:inherit;
+}
+.col-lg-9 sup {
+	font-weight: inherit;
+}
+.col-lg-9 sub {
+	font-weight: inherit;
+}
+.col-lg-9 h2 {
+	color:#fff8ff;
+	font-size:40px;
+	font-family: "ButterSans-Rounded";
+	line-height:60px;
+	background-image: linear-gradient(to left, #FFBCE5 0%, #ffa3d7 50%, #FB96FF 100%);
+	box-shadow: 0px 0px 5px #ffb2ff80;
+	width: fit-content;
+	max-width:98%;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: normal;
+	hyphens: auto;
+	padding:15px 50px 15px 20px;
+	margin: 20px 0 20px 0;
+	border-radius:50px 300px 300px 50px;
+}
+.col-lg-9 h3 {
+	color:#fff8ff;
+	font-size: 25px;
+	font-family: 'Montserrat';
+	font-weight: 700 !important;
+	box-shadow: 0px 0px 2px #ffb2ff80;
+	background: #ffbce5;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: normal;
+	hyphens: auto;
+	max-width:98%;
+	padding:10px 30px 10px 10px;
+	width: fit-content;
+	border-radius:50px 300px 300px 50px;
+	margin: 5px 0;
+}
+.col-lg-9 h4 {
+	color:#ffa3d7;
+	font-size: 20px;
+	font-family: 'Montserrat';
+	font-weight: 700 !important;
+	/* box-shadow: 0px 0px 2px #ffb2ff80;
+	border:#ffbce5 solid 3px;
+	border-radius:10px 30px 30px 10px; */
+	padding:10px 30px 10px 15px;
+	width: fit-content;
+	margin: 5px 0;
+}
+.col-lg-9 h5 {
+	color:#2e2272;
+	font-weight:600;
+	padding:10px 0;
+}
+.col-lg-9 p {
+	color:#2e2272;
+	text-align: justify;
+	/*设置了换行连字符，不想要删掉下面四行*/
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: normal;
+	hyphens: auto;
+	font-weight:500;
+	font-size: 19px;
+	line-height: 35px;
+}
+.col-lg-9 p.code {
+	font-size:17px;
+	font-family: 'SourceCodePro';
+	background:#fff;
+	border-radius: 5px;
+	padding:2px 5px;
+	line-height:22px;
+	border:#ffe7ff solid 1px;
+}
+
+.col-lg-9 li {
+	list-style: url('https://static.igem.wiki/teams/4630/wiki/webpage/page-content/list-dot-2.svg');
+	color:#2e2272;
+	text-align: justify;
+	font-weight:500;
+	font-size: 19px;
+	line-height: 35px;
+	margin-left:25px;
+}
+
+/*table 表格样式*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+
+  margin: 0 ;
+  padding: 0 ;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* 以下是瞎写的 NAVBAR */
+.team_logo_svg {
+	height: 50px;
+	margin-left: 40px;
+}
+
+#navbarSupportedContent {
+	bottom: 20px;
+}
+/* 导航栏白色背景+发光 */
+.navbar {
+	background-color: #fff8ff;
+	box-shadow: 0px 0px 7px #ffb2ffa0;
+}
+/* 下拉菜单那个渐变背景 */
+ul.dropdown-menu {
+	background: linear-gradient(to top, #c696ff 0%, #fb96ff 50%, #ffa3d7 100%);
+	border:2px solid #ffb2ff;
+	box-shadow: 0px 0px 5px #ffb2ff;
+	border-radius: 10px !important;
+	font-family: 'Montserrat';
+	font-weight:700;
+	right: 0px;
+	display: none;
+	width:fit-content;
+}
+ul.dropdown-menu:hover {
+	display:block !important;
+}
+li.nav-item {
+	background:#fff8ff;
+}
+li.nav-item.dropdown {
+	height: 100%;
+}
+/* 这个千万别动！！！！！ */
+li.nav-item.dropdown:hover > ul.dropdown-menu {
+	display: block !important;
+	animation: float-up 0.5s ease;
+	
+
+}
+/* 动画的关键帧 */
+@keyframes float-up {
+	from {
+		opacity: 0.8;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+} 
+
+.dropdown-item:hover {
+	color: #ffffff !important;
+	text-shadow: 0px 0px 3px #fedcff;
+	transform: translateX(2.5%) scale(1.05);
+	background-color: rgba(255, 255, 255, 0) !important;
+	display:block;
+}
+
+/* 这仨是导航悬浮变色+上浮一点点 */
+.nav-item.dropdown:hover {
+	transform: translateY(-5px);
+	transition:0.5s;
+}
+.nav-item.dropdown:hover img.arrow{
+	transform: rotate(180deg);
+	transition:0.2s;
+}
+.nav-item.dropdown:hover .nav-link {
+	color: #c696ff !important;
+}
+.nav-item:hover .nav-link {
+	color: #c696ff !important;
+}
+.dropdown-item {
+	font-weight: 600 !important;
+	color: #ffffff !important;
+}
+
+/* 改了大标题字重 */
+.nav-link {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	color: #ffa3d7 !important;
+}
+
+/* 改了小箭头的位置 */
+.arrow {
+	margin-left: -3px;
+}
+
+/* 原来的文件带的，感觉最好别动 */
+#navbarSupportedContent {
+	position: absolute;
+	top: 20px;
+	right: 10px;
+	color: #ff9e9e;
+}
+/* NavBar 结束 */
+
+/*Design 正文样式*/
+section#design-nav-container {
+	display:flex;
+	flex-wrap: wrap;
+	justify-content:center;
+}
+section#design-nav-container a {
+	text-decoration:none;
+}
+section#design-nav-container div:hover {
+	transform:translateY(-20px);
+}
+section#design-nav-container div {
+	width: 350PX;
+	margin:20px 20px;
+	background:#ffbce5;
+	border-radius: 50PX;
+	padding:20px;
+	transition:1s;
+	box-shadow:  0px 0px 5px #ffb2ff;
+}
+section#design-nav-container div h3 {
+	padding:0;
+	font-size: 1.2rem;
+}
+section#design-nav-container div p {
+	font-size: 0.9rem;
+	line-height:1.2rem;
+	word-wrap: break-word;
+	word-break:normal;
+	hyphens:auto;
+
+}
+/*design 里 EL222 的动态*/
+div.EL222mechanism {
+	position: relative;
+	height: 19.6vw;
+	width: 64vw;
+}
+.EL222mechanism > *{
+	position:absolute;
+}
+.pEL222 {
+	width:40%;
+	left:30%;
+	top:80%;
+}
+.pEL222dark:hover ~ .EL222left , .pEL222dark:active ~ .EL222left {
+	left:43%;
+	top:20%;
+}
+
+.EL222left {
+	height:68%;
+	left:40%;
+	top:5%;
+	transition:1s;
+}
+.pEL222dark:hover ~ .EL222leftactive , .pEL222dark:active ~ .EL222leftactive {
+	left:43%;
+	top:20%;
+	opacity:1;
+}
+.EL222leftactive {
+	opacity:0;
+	height:68%;
+	left:40%;
+	top:5%;
+	filter:drop-shadow(0px 0px 10px #9af3f7);
+	transition:1s;
+}
+.pEL222dark:hover ~ .EL222right , .pEL222dark:active ~ .EL222right {
+	left:50%;
+	top:20%;
+}
+
+.EL222right {
+	height:68%;
+	left:53%;
+	top:5%;
+	transition:1s;
+}
+.pEL222dark:hover ~ .EL222rightactive , .pEL222dark:active ~ .EL222rightactive {
+	left:50%;
+	top:20%;
+	opacity:1;
+}
+.EL222rightactive {
+	opacity:0;
+	height:68%;
+	left:53%;
+	top:5%;
+	filter:drop-shadow(0px 0px 10px #9af3f7);
+	transition:1s;
+}
+.pEL222dark {
+	position:absolute;
+	width:10%;
+	left:24%;
+	top:0;
+}
+.pEL222dark:hover ~ .pEL222light,.pEL222dark:active ~ .pEL222light{
+	opacity:1;
+}
+.pEL222light {
+	pointer-events: none;
+	opacity:0;
+	transition:1s;
+	position:absolute;
+	width:10%;
+	left:24%;
+	top:0%;
+	filter: drop-shadow(0px 0px 10px #9af3f7);
+}
+.pEL222dark:hover ~ .light-wave,.pEL222dark:active ~ .light-wave{
+	opacity:1;
+}
+.light-wave {
+	left:23%;
+	top:48%;
+	width:14%;
+	opacity:0;
+	transition:0.5s;
+}
+div.text-1 {
+	width: 10%;
+	max-height:250px;
+	left:12%;
+	top:8%;
+	font-weight: 700;
+	color:#5CB8FF;
+	font-size: 1.2rem;
+}
