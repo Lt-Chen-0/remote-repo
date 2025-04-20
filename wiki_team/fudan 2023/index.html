@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+<!-- Navigation -->
+<!doctype html>
+
+<div class="mid-container" style="height: 0">
+    <canvas id="tutorial"></canvas>
+</div>
+<script>
+    var current_line = 500;
+  
+    var r = 30;
+    var start_height = 100;
+    var speed = 10;
+    var top_screen;
+    var bottom_screen;
+  
+    var lines = [
+      1360, 750, 1040, 180, 1120, 480, 700, 180, 600, 180, 210, 180, 630, 1120,
+      260, 180,
+    ];
+    function draw() {
+      let scrTop = document.documentElement.scrollTop;
+      var canvas = document.getElementById("tutorial");
+      canvas.width = 1600;
+      canvas.height = 3000;
+      let cvs_h = canvas.getBoundingClientRect().top + scrTop;
+      let cur_h = document.documentElement.clientHeight + scrTop;
+      top_screen = Math.floor(-canvas.getBoundingClientRect().top);
+      bottom_screen = Math.floor(
+        document.documentElement.clientHeight + scrTop - cvs_h
+      );
+      let canvas_h = Math.floor(cur_h - cvs_h) - 100;
+      canvas_h = canvas_h - (canvas_h % 10);
+  
+      if (!canvas.getContext) return;
+      var ctx = canvas.getContext("2d");
+      var gradient = ctx.createLinearGradient(0, 0, 0, 3000);
+      gradient.addColorStop(0, "#014738");
+      gradient.addColorStop(0.9, "#014738");
+      gradient.addColorStop(1, "rgba(1, 71, 56, 0)");
+      ctx.strokeStyle = gradient;
+  
+      ctx.lineWidth = 15.6;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.beginPath();
+  
+      if (canvas_h < start_height) {
+        current_line = start_height;
+      }
+  
+      // var points = [
+      //   [1330, 2130],
+      //   [200, 2190],
+      //   [200, 2700],
+      //   [1250, 3300],
+      //   [1250, 3590],
+      //   [200, 4000],
+      //   [200, 4050],
+      //   [1320, 4500],
+      //   [1300, 4800],
+      // ];
+      var points = [
+        [1330, 1390],
+        [200, 2190],
+        [200, 2700],
+        [1600, 2600],
+        [1250, 2600],
+      ];
+      verticalLine(points[0][0] + r, 0, points[0][1], ctx, canvas_h);
+  
+      circularArc(points[0][0], points[0][1], ctx, canvas_h, 3, 0);
+  
+      horizontalLine(
+        points[0][0],
+        points[1][0],
+        points[0][1] + r,
+        ctx,
+        canvas_h,
+        2,
+        0
+      );
+  
+      circularArc(points[1][0], points[0][1] + r * 2, ctx, canvas_h, 4, 0);
+  
+      verticalLine(
+        points[1][0] - r,
+        points[0][1] + r * 2,
+        points[2][1],
+        ctx,
+        canvas_h
+      );
+  
+      circularArc(points[1][0], points[2][1], ctx, canvas_h, 1, 1);
+  
+      horizontalLine(
+        points[1][0],
+        points[3][0],
+        points[2][1] + r,
+        ctx,
+        canvas_h,
+        1,
+        1
+      );
+  
+      // circularArc(points[3][0], points[2][1] + 2 * r, ctx, canvas_h, 2, 1);
+  
+      // verticalLine(
+      //   points[3][0] + r,
+      //   points[2][1] + 2 * r,
+      //   points[4][1],
+      //   ctx,
+      //   canvas_h
+      // );
+  
+      // circularArc(points[3][0], points[4][1], ctx, canvas_h, 3, 2);
+  
+      // horizontalLine(
+      //   points[3][0],
+      //   points[5][0],
+      //   points[4][1] + r,
+      //   ctx,
+      //   canvas_h,
+      //   2,
+      //   2
+      // );
+  
+      // circularArc(points[5][0], points[4][1] + r * 2, ctx, canvas_h, 4, 2);
+  
+      // verticalLine(
+      //   points[5][0] - r,
+      //   points[4][1] + r * 2,
+      //   points[6][1],
+      //   ctx,
+      //   canvas_h
+      // );
+  
+      // circularArc(points[5][0], points[6][1], ctx, canvas_h, 1, 3);
+  
+      // horizontalLine(
+      //   points[5][0],
+      //   points[7][0],
+      //   points[6][1] + r,
+      //   ctx,
+      //   canvas_h,
+      //   1,
+      //   3
+      // );
+  
+      // circularArc(points[7][0], points[6][1] + r * 2, ctx, canvas_h, 2, 3);
+  
+      // verticalLine(
+      //   points[7][0] + r,
+      //   points[6][1] + r * 2,
+      //   points[8][1],
+      //   ctx,
+      //   canvas_h
+      // );
+  
+      ctx.stroke();
+      canvas.style.backgroundColor = "transparent";
+    }
+  
+    function canDraw(y1, y2) {
+      if (y2 < top_screen || y1 > bottom_screen) return false;
+      else return true;
+    }
+  
+    function verticalLine(x, y1, y2, ctx, canvas_h) {
+      console.log(x, y1, y2);
+      if (current_line >= y1 && canvas_h >= start_height) {
+        if (canDraw(y1, y2)) ctx.moveTo(x, y1);
+        if (current_line > y2) {
+          if (canDraw(y1, y2)) ctx.lineTo(x, y2);
+        } else if (current_line < y2) {
+          if (canDraw(y1, y2)) ctx.lineTo(x, current_line);
+          if (canvas_h > current_line) {
+            current_line += speed;
+            setTimeout(draw, 5);
+          } else if (canvas_h < current_line) {
+            current_line -= speed;
+            setTimeout(draw, 5);
+          }
+        } else {
+          ctx.lineTo(x, y2);
+          if (canvas_h < current_line) {
+            current_line -= speed;
+          }
+        }
+      }
+    }
+    function circularArc(x, y, ctx, canvas_h, typeID, lineID) {
+      console.log(x, y);
+      // r = 100
+      if (typeID == 1) {
+        if (current_line >= y) {
+          // (x,y), pi->0.5pi, 逆, 头line1
+          if (current_line > y + r) {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(x, y, r, Math.PI, Math.PI / 2, true);
+          } else if (current_line < y + r) {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(
+                x,
+                y,
+                r,
+                Math.PI,
+                Math.PI - Math.asin((Math.min(current_line, y + r) - y) / r),
+                true
+              );
+            if (canvas_h > current_line) {
+              current_line += speed;
+              setTimeout(draw, 5);
+            } else if (canvas_h < current_line && lines[lineID] == x) {
+              current_line -= speed;
+              setTimeout("draw(), 5");
+            }
+          } else {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(x, y, r, Math.PI, Math.PI / 2, true);
+            if (canvas_h < current_line && lines[lineID] == x) {
+              current_line -= speed;
+            }
+          }
+        }
+      } else if (typeID == 2) {
+        if (current_line >= y - r && lines[lineID] == x) {
+          // (x,y), 1.5pi->0, 顺, 尾line1
+          if (current_line > y) {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(x, y, r, Math.PI * 1.5, 0, false);
+          } else if (current_line < y) {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(
+                x,
+                y,
+                r,
+                Math.PI * 1.5,
+                Math.PI * 1.5 + Math.acos((y - current_line) / r),
+                false
+              );
+            if (canvas_h > current_line) {
+              current_line += speed;
+              setTimeout(draw, 5);
+            } else if (canvas_h < current_line) {
+              current_line -= speed;
+              setTimeout(draw, 5);
+            }
+          } else {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(x, y, r, Math.PI * 1.5, 0, false);
+            if (canvas_h < current_line) {
+              current_line -= speed;
+            }
+          }
+        }
+      } else if (typeID == 3) {
+        if (current_line >= y) {
+          // (x,y), 0->0.5pi, 顺, 头line2
+          if (current_line > y + r) {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(x, y, r, 0, Math.PI / 2, false);
+          } else if (current_line < y + r) {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(x, y, r, 0, Math.asin((current_line - y) / r), false);
+            if (canvas_h > current_line) {
+              current_line += speed;
+              setTimeout(draw, 5);
+            } else if (canvas_h < current_line) {
+              current_line -= speed;
+              setTimeout(draw, 5);
+            }
+          } else {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(x, y, r, 0, Math.PI / 2, false);
+            if (canvas_h < current_line && lines[lineID] == x) {
+              current_line -= speed;
+            }
+          }
+        }
+      } else if (typeID == 4) {
+        // console.log(lines[lineID]);
+        if (current_line >= y - r && lines[lineID] == x) {
+          // (x,y), 1.5pi->pi, 逆, 尾line2
+          if (current_line > y) {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(x, y, r, Math.PI * 1.5, Math.PI, true);
+          } else if (current_line < y) {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(
+                x,
+                y,
+                r,
+                Math.PI * 1.5,
+                Math.PI + Math.asin((y - current_line) / r),
+                true
+              );
+            if (canvas_h > current_line) {
+              current_line += speed;
+              setTimeout(draw, 5);
+            } else if (canvas_h < current_line) {
+              current_line -= speed;
+              setTimeout(draw, 5);
+            }
+          } else {
+            if (canDraw(y - 150, y + 150))
+              ctx.arc(x, y, r, Math.PI * 1.5, Math.PI, true);
+            if (canvas_h < current_line) {
+              current_line -= speed;
+            }
+          }
+        }
+      }
+    }
+    function horizontalLine(x1, x2, y, ctx, canvas_h, typeID, lineID) {
+      console.log(x1, x2, y);
+      if (typeID == 1) {
+        // 向右
+        if (current_line >= y && canvas_h >= y) {
+          // (600,600)->(850,600)
+          if (canDraw(y - 100, y + 100)) ctx.moveTo(x1, y);
+          if (canDraw(y - 100, y + 100) && x1 != lines[lineID])
+            ctx.lineTo(lines[lineID], y);
+          if (lines[lineID] < x2) {
+            lines[lineID] += 10;
+          }
+          if (lines[lineID] < x2) {
+            setTimeout(draw, 120);
+          }
+        }
+        if (canvas_h < y && lines[lineID] > x1 && current_line == y) {
+          if (canDraw(y - 100, y + 100)) ctx.moveTo(x1, y);
+          if (canDraw(y - 100, y + 100) && x1 != lines[lineID])
+            ctx.lineTo(lines[lineID], y);
+          if (lines[lineID] > x1) {
+            lines[lineID] -= 10;
+          }
+          if (lines[lineID] > x1) {
+            setTimeout(draw, 80);
+          }
+        }
+      } else if (typeID == 2) {
+        // 向左
+        if (current_line >= y && canvas_h >= y) {
+          // (850,1300)->(150,1300)
+          if (canDraw(y - 150, y + 150)) ctx.moveTo(x1, y);
+          if (canDraw(y - 150, y + 150) && x1 != lines[lineID])
+            ctx.lineTo(lines[lineID], y);
+          if (lines[lineID] > x2) {
+            lines[lineID] -= 10;
+          }
+          if (lines[lineID] > x2) {
+            setTimeout(draw, 120);
+          }
+        }
+        if (canvas_h < y && lines[lineID] < x1 && current_line == y) {
+          if (canDraw(y - 150, y + 150)) ctx.moveTo(x1, y);
+          if (canDraw(y - 150, y + 150) && x1 != lines[lineID])
+            ctx.lineTo(lines[lineID], y);
+          if (lines[lineID] < x1) {
+            lines[lineID] += 10;
+          }
+          if (lines[lineID] < x1) {
+            setTimeout(draw, 80);
+          }
+        }
+      }
+    }
+    draw();
+    window.addEventListener("scroll", draw);
+  </script>
+
+</body>
