@@ -1,0 +1,28 @@
+*{
+    scroll-behavior: smooth;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.homepage-holder{
+    /* it holds and expands the whole homepage */
+    margin: 0 auto;
+    width: max(100%, 1300px);
+    height: 14500px;
+    background-color: black;
+    /* the following codes make all boxes placed in center */
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-around;
+}
+
+#tutorial{
+    position: absolute;
+    z-index: 5;
+    top: 700px;
+}
