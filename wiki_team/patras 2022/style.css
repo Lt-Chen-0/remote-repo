@@ -1,0 +1,268 @@
+/* 全局样式和基本布局 */
+body {
+    margin: 0;
+    font-family: sans-serif; /* 使用无衬线字体，简约风格 */
+    background-color: #ffffff; /* 白色背景 */
+    color: #333; /* 默认文字颜色 */
+    line-height: 1.6;
+}
+
+/* 导航栏样式 */
+#navbar {
+    position: fixed; /* 固定在顶部 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95); /* 半透明白色背景 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    padding: 10px 0;
+    z-index: 1000; /* 确保导航栏在最上层 */
+}
+
+#navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; /* 导航项居中 */
+}
+
+#navbar ul li {
+    display: inline-block; /* 水平排列 */
+    margin: 0 15px;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    color: #007bff; /* 鼠标悬停颜色 */
+}
+
+/* ... (前面的全局样式和导航栏样式保持不变) ... */
+
+/* 时间线容器 */
+.timeline-container {
+    width: 80%; /* 时间线内容宽度 */
+    max-width: 1200px; /* 最大宽度 */
+    margin: 80px auto 50px auto; /* 上边距留给导航栏，居中，底部留白 */
+    position: relative; /* 用于定位垂直时间线 */
+    padding: 20px 0;
+}
+
+/* 垂直时间线线条 */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 2px; /* 线条宽度 */
+    background-color: #ccc; /* 线条颜色 */
+    top: 0;
+    bottom: 0;
+    left: 50%; /* 居中 */
+    margin-left: -1px; /* 居中微调 */
+    z-index: -1; /* 确保线条在内容后面 */
+}
+
+/* 时间线项目 */
+.timeline-item {
+    padding: 20px 0;
+    position: relative; /* 用于定位日期和点 */
+    width: 100%; /* 占据整个容器宽度 */
+    box-sizing: border-box; /* 包含 padding 和 border */
+    margin-bottom: 40px; /* 项目之间的间距 */
+}
+
+/* 时间线上的点 (默认实心蓝色) */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    /* 保持大小一致，通过边框制造空心效果 */
+    width: 10px; /* 点的内部直径 */
+    height: 10px; /* 点的内部直径 */
+    border-radius: 50%;
+    background-color: #007bff; /* 默认实心蓝色 */
+    border: 2px solid transparent; /* 默认无边框，透明 */
+    z-index: 1;
+    left: 50%; /* 居中 */
+    /* 使用 transform 居中，可以更好地处理尺寸变化 */
+    transform: translate(-50%, 0);
+    top: 30px; /* 根据需要调整点的垂直位置 */
+    transition: background-color 0.3s ease, border-color 0.3s ease, border-width 0.3s ease; /* 添加过渡动画 */
+}
+
+/* 鼠标滑动到对应内容时，点变为空心 */
+.timeline-item.active-dot::before {
+    background-color: #fff; /* 背景色变为白色 */
+    border: 2px solid #007bff; /* 添加蓝色边框 */
+}
+
+
+/* 日期标签样式 */
+.timeline-date {
+    position: absolute;
+    top: 25px; /* 根据需要调整位置 */
+    font-weight: bold;
+    color: #555;
+    z-index: 1;
+    /* 左右交替定位 */
+    left: calc(50% + 20px); /* 默认靠右 */
+    text-align: left;
+    width: calc(40% - 30px); /* 留出空间给内容块 */
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+    left: auto; /* 取消默认靠右 */
+    right: calc(50% + 20px); /* 靠左 */
+    text-align: right;
+}
+
+
+/* 成果内容容器 (图片 + 文字) */
+.timeline-content {
+    position: relative;
+    width: 45%; /* 内容块宽度 */
+    background-color: #fff; /* 内容块背景 */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* 初始状态隐藏 */
+    /* transform 动画和 opacity 动画 */
+    transition: transform 1s ease-out, opacity 1s ease-out;
+    box-sizing: border-box;
+}
+
+/* 左侧内容块定位 */
+.timeline-item .left-content {
+    /* left: 0; Removed absolute left positioning */
+    margin-right: calc(50% + 20px); /* 留出空间给时间线和右侧 */
+    /* Using Flexbox in parent would be cleaner, but adjusting margins works too */
+    float: left; /* 使用浮动实现左侧定位 */
+    clear: left; /* 清除前面的浮动 */
+    transform: translateX(-100px); /* 初始从左侧移出 (调整距离使其更明显) */
+}
+
+/* 右侧内容块定位 */
+.timeline-item .right-content {
+    /* left: calc(55%); Removed absolute left positioning */
+     margin-left: calc(50% + 20px); /* 留出空间给时间线和左侧 */
+     float: right; /* 使用浮动实现右侧定位 */
+     clear: right; /* 清除前面的浮动 */
+    transform: translateX(100px); /* 初始从右侧移出 (调整距离) */
+}
+
+/* 添加 clearfix 到 timeline-item 如果内容块使用 float */
+.timeline-item::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* 触发动画后的状态 */
+/* 当 .timeline-item 获得 active-dot 类时，其内部的 .timeline-content 执行动画 */
+.timeline-item.active-dot .timeline-content {
+    transform: translateX(0); /* 移动到原位 */
+    opacity: 1; /* 完全显示 */
+}
+
+
+/* 内容块内的图片和文字 (保持不变) */
+.timeline-content img {
+    max-width: 100%; /* 图片最大宽度为其容器的100% */
+    height: auto; /* 高度自动 */
+    display: block; /* 移除图片底部空隙 */
+    margin-bottom: 10px; /* 图片和文字的间距 */
+    border-radius: 4px;
+}
+
+.timeline-content .content-text h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+/* 响应式设计 (修改部分以匹配浮动布局和点的位置调整) */
+@media screen and (max-width: 768px) {
+    .timeline-container::after {
+        left: 20px; /* 时间线移到左侧 */
+        margin-left: 0;
+    }
+
+    /* 点移到左侧时间线上 */
+    .timeline-item::before {
+        left: 20px;
+        transform: translate(-50%, 0); /* 居中微调 */
+        margin-left: 0; /* 确保没有margin-left干扰 */
+    }
+
+    /* 日期移到时间线右侧 */
+    .timeline-date {
+        left: 50px;
+        text-align: left;
+        width: calc(100% - 70px);
+    }
+
+     .timeline-item:nth-child(even) .timeline-date {
+        right: auto; /* 取消靠右 */
+        left: 50px; /* 同样移到时间线右侧 */
+        text-align: left;
+    }
+
+    /* 内容块宽度调整并移到时间线右侧 */
+    .timeline-content {
+        width: calc(100% - 70px);
+        margin-left: 50px;
+        margin-right: 0; /* 移除右侧 margin */
+        float: none; /* 取消浮动 */
+        clear: both; /* 清除浮动 */
+    }
+
+    /* 统一从右侧移入动画 */
+    .timeline-item .left-content,
+    .timeline-item .right-content {
+         transform: translateX(100px); /* 统一从右侧移入 (调整距离) */
+         margin-left: 50px; /* 确保在小屏幕下都靠右对齐时间线 */
+    }
+
+    /* 触发动画后的状态 */
+    .timeline-item.active-dot .timeline-content {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+     /* 清除浮动在小屏幕下不需要了 */
+     .timeline-item::after {
+         display: none;
+     }
+
+
+     #navbar ul li {
+        margin: 0 8px; /* 减小导航项间距 */
+    }
+}
+
+@media screen and (max-width: 480px) {
+     #navbar ul li {
+        display: block; /* 导航项堆叠 */
+        margin: 5px 0;
+     }
+     #navbar ul {
+         padding: 5px 0;
+     }
+     #navbar {
+         padding: 5px 0;
+     }
+     .timeline-container {
+         width: 90%; /* 容器宽度调整 */
+         margin-top: 120px; /* 留更多空间给堆叠的导航 */
+     }
+     .timeline-date {
+         top: 10px; /* 调整日期位置 */
+     }
+     .timeline-item::before {
+         top: 15px; /* 调整点的位置 */
+     }
+}
