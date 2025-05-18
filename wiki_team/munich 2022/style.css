@@ -1,0 +1,85 @@
+/* style.css - Logo 样式和动画 */
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.logo-text {
+    font-size: 5rem; /* 大字体，确保效果清晰 */
+    font-weight: bold;
+    color: #333; /* 默认字体颜色 */
+    position: relative;
+    cursor: pointer;
+    /* 鼠标移开时，原文字颜色恢复的过渡。
+       伪元素的clip-path会立即回到初始状态（因为没有在 :not(:hover)::before 中定义反向transition），
+       这样彩色会“瞬间”消失，只留下默认文字颜色。这是符合“鼠标移动就退回”的。*/
+    transition: color 0.3s ease-out;
+    text-decoration: none;
+    overflow: hidden; /* 依然重要 */
+}
+
+.logo-text::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    background-image: linear-gradient(
+        45deg, /* 渐变方向：右下到右上。所以右上角是紫/蓝等末端颜色 */
+        #ff0000, /* 红 */
+        #ff7f00, /* 橙 */
+        #ffff00, /* 黄 */
+        #00ff00, /* 绿 */
+        #0000ff, /* 蓝 */
+        #4b0082, /* 靛 */
+        #8b00ff  /* 紫 */
+    );
+    /* 背景图大小固定，不让它自己动，以便清晰观察 clip-path 的流动效果 */
+    background-size: 100% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    /* === 修改核心：初始 clip-path === */
+    /* 初始状态：在右上角裁剪出一个小矩形区域，让这部分文字预先显示彩色。
+       例如，从右边数5%的宽度，从顶部数5%的高度。
+       P1: (95%, 0%)   - 小矩形的左上点
+       P2: (100%, 0%)  - 小矩形的右上点 (也是整个元素的右上角)
+       P3: (100%, 5%)  - 小矩形的右下点
+       P4: (95%, 5%)   - 小矩形的左下点
+       你可以调整 95% 和 5% 的值来改变初始彩色区域的大小。
+    */
+    clip-path: polygon(
+        95% 0%,    /* 左上 (对于小块来说) */
+        100% 0%,   /* 右上 */
+        100% 5%,   /* 右下 */
+        95% 5%     /* 左下 */
+    );
+
+    /* === 修改核心：过渡动画 === */
+    /* 使用 linear 匀速动画，时长增加到 1.5 秒，让“慢慢流动”更明显 */
+    transition: clip-path 1.5s linear;
+    /* 暂时移除了 background-position 的动画，让我们专注于 clip-path 的流动感 */
+}
+
+/* 鼠标悬浮在 .logo-text 上时的效果 */
+.logo-text:hover {
+    /* 原文字变透明，完全显示伪元素的彩色 */
+    color: transparent;
+}
+
+.logo-text:hover::before {
+    /* 动画结束状态：伪元素完全展开，覆盖整个文本区域 */
+    clip-path: polygon(
+        0% 0%,   /* 元素左上角 */
+        100% 0%,  /* 元素右上角 */
+        100% 100%,/* 元素右下角 */
+        0% 100%   /* 元素左下角 */
+    );
+}
