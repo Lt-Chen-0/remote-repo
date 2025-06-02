@@ -1,6 +1,8 @@
 .expandable-component {
     font-family: "Exo 2", sans-serif;
-    margin: 20px;
+    margin: 20px 20vw;
+    /* border-radius: 4; */
+    /* height: 50px; */
   }
   
 .toggle-button {

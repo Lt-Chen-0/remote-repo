@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    /* The body's background will be covered by sun-progress-container */
+}
+
+.sun-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; /* Behind content, but visible */
+    overflow: hidden;
+    transition: background-image 1s ease-in-out, background-color 1s ease-in-out;
+    background-color: #0b1d35; /* Default: Dark blue for night */
+    background-image: linear-gradient(to bottom, #020111 30%, #202076 100%);
+}
+
+.progress-track-svg {
+    position: absolute;
+    left: 0; /* Span full width */
+    top: 15vh; /* Position from top: middle-upper */
+    width: 100%;
+    height: 25vh; /* Define a height for the SVG area */
+    pointer-events: none;
+}
+
+#sunTrackPath {
+    stroke: rgba(255, 255, 255, 0.3); /* Slightly more visible */
+    stroke-width: 5; /* Increased stroke width for better visibility */
+    fill: none;
+}
+
+.sun-indicator {
+    position: absolute;
+    width: 40px; 
+    height: 40px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 15px 5px #FFD700, 0 0 30px 10px #FFFACD;
+    transform: translate(-50%, -50%);
+    transition: background-color 1s ease-in-out, box-shadow 1s ease-in-out;
+    z-index: 2; 
+}
+
+.content {
+    position: relative; 
+    z-index: 10;      
+    padding: 20px;
+    padding-top: 5vh; 
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: #333; 
+}
+
+
+/* --- Day/Night Theme States (remain largely the same, applied to full container) --- */
+.sun-progress-container.theme-dawn {
+    background-image: linear-gradient(to bottom, #2c3e50 0%, #f39c12 100%);
+    background-color: #7f8c8d;
+}
+.sun-progress-container.theme-dawn .sun-indicator {
+    background-color: #FFFACD;
+    box-shadow: 0 0 15px 5px #FFFACD, 0 0 30px 10px #f1c40f;
+}
+
+.sun-progress-container.theme-day {
+    background-image: linear-gradient(to bottom, #3498db 0%, #87CEEB 100%);
+    background-color: #87CEEB;
+}
+.sun-progress-container.theme-day .sun-indicator {
+    background-color: #FFFF00;
+    box-shadow: 0 0 20px 8px #FFFF00, 0 0 40px 15px rgba(255, 255, 0, 0.7);
+}
+
+.sun-progress-container.theme-dusk {
+    background-image: linear-gradient(to bottom, #e74c3c 0%, #c0392b 50%, #2c3e50 100%);
+    background-color: #e74c3c;
+}
+.sun-progress-container.theme-dusk .sun-indicator {
+    background-color: #FFA500;
+    box-shadow: 0 0 15px 5px #FFA500, 0 0 30px 10px #e67e22;
+}
+
+.sun-progress-container.theme-night {
+    background-image: linear-gradient(to bottom, #020111 30%, #202076 100%);
+    background-color: #0b1d35;
+}
+.sun-progress-container.theme-night .sun-indicator {
+    background-color: #FFD700;
+    box-shadow: 0 0 15px 5px #FFD700, 0 0 30px 10px #FFFACD;
+}
